@@ -1,0 +1,20 @@
+.navbar {
+    border: none;
+    background-color: #FFFFFF !important
+    ;
+  }
+
+.navbar-brand img {
+    max-height: 40px;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+}
+
+
+  

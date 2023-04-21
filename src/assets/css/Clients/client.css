@@ -1,0 +1,89 @@
+/* Large font size */
+.font-size-36 {
+    font-size: calc(1.5em + 1vmin);
+  }
+  
+/* Medium font size */
+.font-size-24 {
+    font-size: calc(0.9em + 1vmin);
+}
+
+/* Small font size */
+.font-size-18 {
+    font-size: calc(0.7em + 1vmin);
+}
+
+.dosis-bold{
+    font-family: 'Dosis Bold', sans-serif !important;
+}
+
+.dosis-semibold{
+    font-family: 'Dosis SemiBold', sans-serif !important;
+}
+
+.dosis-regular{
+    font-family: 'Dosis Regular', sans-serif !important;
+
+}
+
+.text-input{
+    background-color: transparent !important;
+    border-bottom: 1px solid #8193E0 !important;
+    outline: none; /* optional, removes the outline around the input field when it's clicked */
+    border: none;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+
+
+/* mobile devices */
+@media only screen and (max-width: 767px) { 
+    .mobile-widget{
+        display: block !important;
+    }
+    .desktop-widget{
+        display: none !important;
+    }
+ 
+    #our-feature-section{
+        border-radius: 25px 25px 0px 0px !important;
+    }
+    .swiper {
+        width: 100% !important;
+        height: 150px !important;
+    }
+}
+
+/* ipad devices */
+@media (min-width: 768px) {
+    .mobile-widget{
+        display: block !important;
+    }
+    .desktop-widget{
+        display: none !important;
+    }
+    .top-home-background-image-mobile {
+        height: 60vw !important;
+    }
+    .top-home-background-image-mobile {
+        height: 70vw !important;
+    }
+    .app-illustration{
+        height: 350px !important;
+    }
+    #footer-mobile-logo{
+        width: 250px !important;
+    }
+    
+}
+
+/* laptops */
+@media (min-width: 992px) {
+    .mobile-widget{
+        display: none !important;
+    }
+    .desktop-widget{
+        display: block !important;
+    }
+}

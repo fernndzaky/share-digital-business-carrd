@@ -1,0 +1,44 @@
+
+
+.purple-button {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #864A8F;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none !important; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);   
+    border: 2px solid #864A8F;
+    transition: 0.5s;
+
+}
+
+.purple-button:hover{
+    background-color: #fff;
+    color: #864A8F;
+    border: 2px solid #864A8F;
+
+}
+
+
+.white-button {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #FFFFFF;
+    color: #252525;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none !important; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);   
+    border: 2px solid #9396C4;
+    transition: 0.5s;
+
+}
+
+.white-button:hover{
+    background-color: #9396C4;
+    color: #FFFFFF;
+    border: 2px solid #9396C4;
+
+}
