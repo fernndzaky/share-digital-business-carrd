@@ -17,15 +17,15 @@ class SignIn extends Component {
         return (
           
             <div className="container" style={{backgroundColor:'#1A3B7D'}}>
-              <Helmet>
-                  <title>
-                      Bizz | Elevate Your Connections, Redefine Impressions.
-                  </title>
-                  <meta
-                      name="description"
-                      content="MewCom | Connect users with communication needs to a virtual host"
-                  />
-              </Helmet>
+            <Helmet>
+                <title>
+                    Bizz | Elevate Your Connections, Redefine Impressions.
+                </title>
+                <meta
+                    name="description"
+                    content="MewCom | Connect users with communication needs to a virtual host"
+                />
+            </Helmet>
             {/* <!-- Outer Row --> */}
             <div className="row justify-content-center">
         
