@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link, withRouter} from 'react-router-dom';
 
+import {Helmet} from "react-helmet";
 
 
 class SignIn extends Component {
@@ -14,7 +15,17 @@ class SignIn extends Component {
 
     render() {
         return (
-            <div className="container" style={{backgroundColor:'#864A8F'}}>
+          
+            <div className="container" style={{backgroundColor:'#1A3B7D'}}>
+              <Helmet>
+                  <title>
+                      Bizz | Elevate Your Connections, Redefine Impressions.
+                  </title>
+                  <meta
+                      name="description"
+                      content="MewCom | Connect users with communication needs to a virtual host"
+                  />
+              </Helmet>
             {/* <!-- Outer Row --> */}
             <div className="row justify-content-center">
         
@@ -28,7 +39,7 @@ class SignIn extends Component {
                       <div className="col-lg-6">
                         <div className="p-5">
                           <div className="text-center">
-                            <h1 className="h4 text-gray-900 mb-4">Welcome MewCom!</h1>
+                            <h1 className="h4 text-gray-900 mb-4">Welcome To Bizz!</h1>
                           </div>
                           <form onSubmit={this.handleSignIn} className="user">
                             <div className="form-group">

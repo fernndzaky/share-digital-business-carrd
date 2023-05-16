@@ -2,9 +2,12 @@
 // Toshi the dog from https://unsplash.com/@charlesdeluvio - what a funny dog...
 
 .bg-login-image {
-  background: url('../../assets/img/MewCom_Logo_Gradient.png');
+  background: url('../../assets/img/BIZZ_NAME_LOGO.png');
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 50%;
+
 }
 
 .bg-register-image {
