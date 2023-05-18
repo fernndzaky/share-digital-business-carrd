@@ -52,6 +52,28 @@
         width: 100% !important;
         height: 150px !important;
     }
+    #top-app-illustration{
+        height: 200px !important;
+    }
+    #white-card-illustration{
+        height: 200px !important;
+    }
+    #cms-illustration{
+        height: 200px !important;
+    }
+    #user-ui-illustration{
+        height: 200px !important;
+    }
+    #height-container{
+        height: 50vh !important;
+    }
+    #image-height-container{
+        height: 30vh !important;
+    }
+    /* Small font size */
+    .font-size-18 {
+        font-size: calc(0.8em + 1vmin);
+    }   
 }
 
 /* ipad devices */
@@ -71,9 +93,34 @@
     .app-illustration{
         height: 350px !important;
     }
+    #top-height-container{
+        height: 50vh !important;
+    }
     #footer-mobile-logo{
         width: 250px !important;
     }
+    #top-app-illustration{
+        height: 250px !important;
+    }
+    #white-card-illustration{
+        height: 250px !important;
+    }
+    #cms-illustration{
+        height: 250px !important;
+    }
+    #user-ui-illustration{
+        height: 250px !important;
+    }
+    #height-container{
+        height: 50vh !important;
+    }
+    #image-height-container{
+        height: 50vh !important;
+    }
+    /* Small font size */
+    .font-size-18 {
+        font-size: calc(0.8em + 1vmin);
+    }   
     
 }
 
@@ -85,4 +132,20 @@
     .desktop-widget{
         display: block !important;
     }
+    #top-height-container{
+        height: 85vh !important;
+    }
+    #height-container{
+        height: 70vh !important;
+    }
+    #image-height-container{
+        height: 70vh !important;
+    }
+    /* Small font size */
+    .font-size-24 {
+        font-size: calc(1em + 1vmin);
+    }   
+    .font-size-18 {
+        font-size: calc(0.5em + 1vmin);
+    }   
 }

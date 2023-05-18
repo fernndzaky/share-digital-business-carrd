@@ -46,14 +46,14 @@ class HomePage extends React.Component {
         <NavigationBar></NavigationBar>
 
         {/* START OF TOP DESKTOP SECTION */}
-        <div className='desktop-widget'>
-            <div className="row m-0 no-gutters px-lg-5" style={{height:'85vh'}}>
+        <div >
+            <div className="row m-0 no-gutters px-lg-5 py-5" id="top-height-container" style={{height:'85vh'}}>
                 <div className="col-md-6 d-flex flex-row justify-content-center align-items-center">
-                    <img src="/images/Card_Illustration.png" className='app-illustration' alt="Card Illustration" style={{height:'500px'}} />
+                    <img src="/images/Card_Illustration.png" className='app-illustration' id="top-app-illustration" alt="Card Illustration" style={{height:'500px'}} />
                 </div>
                 <div className="col-md-6 pr-5 pl-5 d-flex flex-column justify-content-center align-items-start">
                     <p className="font-size-36 raleway-bold mb-3" style={{color:'#252525'}}>BIZZ.</p>
-                    <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#252525'}}>Experience seamless connections and leave <br></br> unforgettable impressions with Bizz, the smart <br></br> business card, redefines networking with style!</p>
+                    <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#252525'}}>Experience seamless connections and leave unforgettable impressions with Bizz, the smart business card, redefines networking with style!</p>
                     <BlueButton buttonText={"LEARN MORE"}></BlueButton>
                 </div>
             </div>
@@ -64,32 +64,32 @@ class HomePage extends React.Component {
 
         {/* START OF MIDDLE SECTION */}
         <div className="row m-0 py-5 px-lg-5" style={{backgroundColor:'#29353C'}} id="our-product">
-            <div className="col-md-6 col-xs-12 pl-5 d-flex flex-column justify-content-center align-items-start" style={{height:'70vh'}}>
+            <div className="col-md-6 col-xs-12 pl-5 pr-5 d-flex flex-column justify-content-center align-items-start" id="height-container" style={{height:'70vh'}}> 
                 <p className="font-size-36 raleway-bold mb-3" style={{color:'#FFFFFF'}}> <span style={{color:'#F8AA8B'}}>SMART</span> BUSINESS CARD</p>
-                <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#FFFFFF'}}>Elevate your networking game and make lasting <br></br> impressions with Bizz, the smart business card that <br></br> connects you with style and sophistication</p>
+                <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#FFFFFF'}}>Elevate your networking game and make lasting impressions with Bizz, the smart business card that connects you with style and sophistication</p>
                 <BlueButton buttonText={"SHOP NOW"}></BlueButton>
             </div>
-            <div className="col-md-6 col-xs-12 d-flex flex-row justify-content-center align-items-center"  style={{height:'70vh'}}>
-                <img src="/images/White_Card_Illustration.png" className='app-illustration' alt="White_Card_Illustration" style={{height:'500px'}} />
+            <div className="col-md-6 col-xs-12 d-flex flex-row justify-content-center align-items-center" id="image-height-container"  style={{height:'70vh'}}>
+                <img src="/images/White_Card_Illustration.png" className='app-illustration' id="white-card-illustration" alt="White_Card_Illustration" style={{height:'500px'}} />
             </div>
 
            
-            <div className="col-md-6 col-xs-12 d-flex flex-row justify-content-center align-items-center"  style={{height:'70vh'}}>
-                <img src="/images/CMS_Application.png" className='app-illustration' alt="CMS_Application" style={{height:'500px'}} />
+            <div className="col-md-6 col-xs-12 d-flex flex-row justify-content-center align-items-center" id="image-height-container"  style={{height:'70vh'}}>
+                <img src="/images/CMS_Application.png" className='app-illustration' alt="CMS_Application" id="cms-illustration" style={{height:'500px'}} />
             </div>
-            <div className="col-md-6 col-xs-12 pr-5 d-flex flex-column justify-content-center align-items-start" style={{height:'70vh'}}>
+            <div className="col-md-6 col-xs-12 pr-5 pl-5 d-flex flex-column justify-content-center align-items-start" id="height-container"  style={{height:'70vh'}}>
                 <p className="font-size-36 raleway-bold mb-3" style={{color:'#FFFFFF'}}> Customize. Connect. Impress.</p>
-                <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#FFFFFF'}}>Unleash your personal touch and forge memorable <br></br> connections with Bizz, where you can effortlessly <br></br> customize your data through our CMS, revolutionizing networking with style and sophistication</p>
+                <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#FFFFFF'}}>Unleash your personal touch and forge memorable connections with Bizz, where you can effortlessly customize your data through our CMS, revolutionizing networking with style and sophistication</p>
                 <BlueButton buttonText={"SHOP NOW"}></BlueButton>
             </div>
-
-            <div className="col-md-6 col-xs-12 pl-5 d-flex flex-column justify-content-center align-items-start" style={{height:'70vh'}}>
+            
+            <div className="col-md-6 col-xs-12 pl-5 pr-5 d-flex flex-column justify-content-center align-items-start" id="height-container"  style={{height:'70vh'}}>
                 <p className="font-size-36 raleway-bold mb-3" style={{color:'#FFFFFF'}}><span style={{color:'#FC5543'}}>BOLD</span> VISUAL STATEMENT</p>
-                <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#FFFFFF'}}>Choose from a vibrant palette of three distinct <br></br> colors, allowing you to personalize your Bizz <br></br> experience and make a bold visual statement.</p>
+                <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#FFFFFF'}}>Choose from a vibrant palette of three distinct colors, allowing you to personalize your Bizz experience and make a bold visual statement.</p>
                 <BlueButton buttonText={"SHOP NOW"}></BlueButton>
             </div>
-            <div className="col-md-6 col-xs-12 d-flex flex-row justify-content-center align-items-center"  style={{height:'70vh'}}>
-                <img src="/images/User_UI.png" className='app-illustration' alt="User_UI" style={{height:'500px'}} />
+            <div className="col-md-6 col-xs-12 d-flex flex-row justify-content-center align-items-center" id="image-height-container"  style={{height:'70vh'}}>
+                <img src="/images/User_UI.png" className='app-illustration' alt="User_UI" id="user-ui-illustration" style={{height:'500px'}} />
             </div>
 
             <div className='col-12 px-5 py-5' id="contact-us">

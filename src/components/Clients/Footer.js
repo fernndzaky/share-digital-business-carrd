@@ -12,7 +12,7 @@ function Footer() {
         <div className='col-12 p-0'>
             <img src="/images/BIZZ_NAME_LOGO_WHITE.png" id="footer-logo" alt="Logo" className="img-fluid desktop-widget" style={{width:'10%'}} />
             <div className='mobile-widget' style={{textAlign:'center'}}>
-                <img src="/images/MewCom_Text_Logo.png" id="footer-mobile-logo" alt="Logo"className="img-fluid" style={{width:'50%'}} />
+                <img src="/images/BIZZ_NAME_LOGO_WHITE.png" id="footer-mobile-logo" alt="Logo"className="img-fluid" style={{width:'50%'}} />
 
             </div>
         </div>
