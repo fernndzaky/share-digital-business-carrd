@@ -19,7 +19,7 @@ class SignIn extends Component {
             <div className="container" style={{backgroundColor:'#1A3B7D'}}>
             <Helmet>
                 <title>
-                    Bizz | Elevate Your Connections, Redefine Impressions.
+                    Bizz Login | Elevate Your Connections, Redefine Impressions.
                 </title>
                 <meta
                     name="description"

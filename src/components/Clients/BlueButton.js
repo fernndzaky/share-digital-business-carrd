@@ -5,10 +5,10 @@ import '../../assets/css/Clients/components.css';
 
 
 
-export default class WhiteButton extends Component {
+export default class BlueButton extends Component {
   render(){
       return(
-        <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="white-button font-size-18 lato-bold">
+        <a href="#our-product" rel="noopener noreferrer" className="blue-button font-size-18 lato-bold">
             {this.props.buttonText}
         </a>
         )

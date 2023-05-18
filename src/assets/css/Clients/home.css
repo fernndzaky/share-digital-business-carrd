@@ -1,18 +1,4 @@
-.top-home-background-image {
-    background-image: url('../../../../public/images/Top_Section_Background.png');
-    background-size: cover;
-    background-position: center;
-    height: 86vh;
-}
 
-.top-home-background-image-mobile {
-    background-image: url('../../../../public/images/Top_Section_Background_Mobile.png');
-    background-size: cover;
-    background-position: center;
-    height: 90vw;
-    width: 100%;
-}
-  
 
 .app-illustration{
     transition: transform 0.5s ease;

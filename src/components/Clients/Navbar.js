@@ -8,25 +8,17 @@ import { Navbar, Nav } from 'react-bootstrap';
 
 function NavigationBar() {
   return (
-    <Navbar expand="lg" variant="light" className="py-3 px-lg-5 sticky-top">
+    <Navbar expand="lg" variant="light" className="py-4 px-lg-5 sticky-top">
       <Navbar.Brand href="/">
-        <img src="/images/MewCom_Text_Logo.png" alt="Logo" height="40" className="img-fluid" />
+        <img src="/images/BIZZ_NAME_LOGO.png" alt="Logo" style={{width:'80%'}}className="img-fluid" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbar-nav" />
       <Navbar.Collapse id="navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link as={Link} to="/" className="mr-lg-5 font-size-24" style={{color:"#864A8F", fontFamily: "Dosis SemiBold"}}>
-            Home
-          </Nav.Link>
-          <Nav.Link as={Link} to="/about" className="mr-lg-5 font-size-24" style={{color:"#864A8F", fontFamily: "Dosis SemiBold"}}>
-            Company
-          </Nav.Link>
-          <Nav.Link as={Link} to="/contact" className="mr-lg-5 font-size-24" style={{color:"#864A8F", fontFamily: "Dosis SemiBold"}}>
-            Our Product
-          </Nav.Link>
-          <Nav.Link as={Link} to="/contact" className="mr-lg-5 font-size-24" style={{color:"#864A8F", fontFamily: "Dosis SemiBold"}}>
-            Contact Us
-          </Nav.Link>
+          <a href="/" className="mr-lg-5 font-size-18" style={{color:"#1A3B7D", fontFamily: "Lato SemiBold"}}>Home</a>
+          <a href="#our-product" className="mr-lg-5 font-size-18" style={{color:"#1A3B7D", fontFamily: "Lato SemiBold"}}>Our Product</a>
+          <a href="#contact-us" className="mr-lg-5 font-size-18" style={{color:"#1A3B7D", fontFamily: "Lato SemiBold"}}>Contact Us</a>
+          <a href="/login" className="mr-lg-5 font-size-18" style={{color:"#1A3B7D", fontFamily: "Lato SemiBold"}}>Login</a>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

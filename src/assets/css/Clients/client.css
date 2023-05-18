@@ -10,20 +10,19 @@
 
 /* Small font size */
 .font-size-18 {
-    font-size: calc(0.7em + 1vmin);
+    font-size: calc(0.6em + 1vmin);
 }
 
-.dosis-bold{
-    font-family: 'Dosis Bold', sans-serif !important;
+.raleway-bold{
+    font-family: 'Raleway Bold', sans-serif !important;
 }
 
-.dosis-semibold{
-    font-family: 'Dosis SemiBold', sans-serif !important;
+.lato-bold{
+    font-family: 'Lato Bold', sans-serif !important;
 }
 
-.dosis-regular{
-    font-family: 'Dosis Regular', sans-serif !important;
-
+.lato-semi-bold{
+    font-family: 'Lato SemiBold', sans-serif !important;
 }
 
 .text-input{

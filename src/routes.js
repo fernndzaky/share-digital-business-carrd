@@ -20,7 +20,8 @@ import IdentityVerification from "./pages/IdentityVerification";
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <Route exact path="/" component={SignIn} />
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/login" component={SignIn} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route path="/signup" component={SignUp} />
             <Route path="/cards" component={Cards} />

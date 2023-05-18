@@ -1,23 +1,23 @@
 
 
-.purple-button {
+.blue-button {
     display: inline-block;
     padding: 10px 30px;
-    background-color: #864A8F;
+    background-color: #1A3B7D;
     color: #fff;
     border-radius: 50px;
     text-align: center;
     text-decoration: none !important; 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);   
-    border: 2px solid #864A8F;
+    border: 2px solid #1A3B7D;
     transition: 0.5s;
 
 }
 
-.purple-button:hover{
+.blue-button:hover{
     background-color: #fff;
-    color: #864A8F;
-    border: 2px solid #864A8F;
+    color: #1A3B7D;
+    border: 2px solid #1A3B7D;
 
 }
 
@@ -26,19 +26,19 @@
     display: inline-block;
     padding: 10px 30px;
     background-color: #FFFFFF;
-    color: #252525;
+    color: #1A3B7D;
     border-radius: 50px;
     text-align: center;
     text-decoration: none !important; 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);   
-    border: 2px solid #9396C4;
+    border: 2px solid #ffffff;
     transition: 0.5s;
 
 }
 
 .white-button:hover{
-    background-color: #9396C4;
+    background-color: #1A3B7D;
     color: #FFFFFF;
-    border: 2px solid #9396C4;
+    border: 2px solid #1A3B7D;
 
 }
