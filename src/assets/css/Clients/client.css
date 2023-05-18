@@ -10,7 +10,7 @@
 
 /* Small font size */
 .font-size-18 {
-    font-size: calc(0.6em + 1vmin);
+    font-size: calc(0.7em + 1vmin);
 }
 
 .raleway-bold{
@@ -143,9 +143,22 @@
     }
     /* Small font size */
     .font-size-24 {
-        font-size: calc(1em + 1vmin);
+        font-size: calc(0.9em + 1vmin);
     }   
     .font-size-18 {
-        font-size: calc(0.5em + 1vmin);
-    }   
+        font-size: calc(0.6em + 1vmin);
+    }  
+    
+    #top-app-illustration{
+        height: 350px !important;
+    }
+    #white-card-illustration{
+        height: 350px !important;
+    }
+    #cms-illustration{
+        height: 400px !important;
+    }
+    #user-ui-illustration{
+        height: 400px !important;
+    }
 }
