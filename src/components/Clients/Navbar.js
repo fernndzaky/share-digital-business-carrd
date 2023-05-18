@@ -12,7 +12,7 @@ function NavigationBar() {
   return (
     <Navbar expand="lg" variant="light" className="py-4 px-lg-5 sticky-top">
       <Navbar.Brand href="/">
-        <img src="/images/BIZZ_NAME_LOGO.png" alt="Logo" style={{width:'80%'}}className="img-fluid" />
+        <img src="/images/BIZZ_NAME_LOGO.png" alt="Logo" style={{width:'120px'}}className="img-fluid" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbar-nav" />
       <Navbar.Collapse id="navbar-nav">
