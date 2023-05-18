@@ -53,22 +53,22 @@
         height: 150px !important;
     }
     #top-app-illustration{
-        height: 200px !important;
+        height: 250px !important;
     }
     #white-card-illustration{
-        height: 200px !important;
+        height: 300px !important;
     }
     #cms-illustration{
-        height: 200px !important;
+        height: 300px !important;
     }
     #user-ui-illustration{
-        height: 200px !important;
+        height: 300px !important;
     }
     #height-container{
         height: 50vh !important;
     }
     #image-height-container{
-        height: 30vh !important;
+        height: 40vh !important;
     }
     /* Small font size */
     .font-size-18 {
