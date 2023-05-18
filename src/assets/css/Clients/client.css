@@ -65,10 +65,13 @@
         height: 300px !important;
     }
     #height-container{
-        height: 50vh !important;
+        height: 60vh !important;
+    }
+    #top-height-container{
+        height: 100vh !important;
     }
     #image-height-container{
-        height: 40vh !important;
+        height: 60vh !important;
     }
     /* Small font size */
     .font-size-18 {

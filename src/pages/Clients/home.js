@@ -99,7 +99,7 @@ class HomePage extends React.Component {
 
             <div className='col-12 px-5 py-5' id="contact-us">
                 <div className='p-lg-5 p-4' style={{backgroundColor:'#1A3B7D', borderRadius:'10px'}}>
-                    <p className="font-size-36 raleway-bold mb-3" style={{color:'#FFFFFF'}}>CONTACT US</p>
+                    <p className="font-size-36 raleway-bold mb-3" style={{color:'#FFFFFF'}}>Contact Us</p>
                     <div className='pr-lg-5'>
                         <p className="font-size-18 lato-regular mt-2 mb-3" style={{color:'#FFFFFF'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
                     </div>
