@@ -32,7 +32,7 @@ class Sidebar extends Component {
         {/* <!-- Sidebar - Brand --> */}
         <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
           <div className="sidebar-brand-icon rotate-n-15">
-            <img src="images/BIZZ_NAME_LOGO_WHITE.png" class="img-fluid" style={{width:'50%'}} />
+            <img src="/images/BIZZ_NAME_LOGO_WHITE.png" class="img-fluid" style={{width:'50%'}} />
           </div>
         </a>
 
@@ -45,6 +45,15 @@ class Sidebar extends Component {
             <i className="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></Link>
         </li>
+
+        {/* <!-- Nav Item - Users --> */}
+        <li className="nav-item">
+          <Link className="nav-link" to="/dashboard/users">
+            <i className="fas fa-fw fa-user-alt"></i>
+            <span>Users</span></Link>
+        </li>
+
+        
         
 
         {/* <!-- Divider --> */}
@@ -71,6 +80,38 @@ class Sidebar extends Component {
           </div>
         </li>
         /*}
+
+         {/* Modal Change Password*/}
+                  <div className="modal fade" id="changePasswordModal" tabIndex={-1} role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">x</span>
+                          </button>
+                        </div>
+                        <div className="modal-body">
+                          <div className='col-12 pt-1'>
+                            <label style={{color:'grey'}}>Old Password</label> <br></br>
+                            <input type="password" className="form-control"   />
+                          </div>
+                          <div className='col-12 pt-1'>
+                            <label style={{color:'grey'}}>New Password</label> <br></br>
+                            <input type="password" className="form-control"   />
+                          </div>
+                          <div className='col-12 pt-1'>
+                            <label style={{color:'grey'}}>Confirm New Password</label> <br></br>
+                            <input type="password" className="form-control"   />
+                          </div>
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                          <button type="button" className="btn btn-primary">CONFIRM</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
 
         {/* <!-- Sidebar Toggler (Sidebar) --> */}

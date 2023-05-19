@@ -38,8 +38,40 @@ class Users extends Component {
               <div className="container-fluid">
 
                 {/* <!-- Page Heading --> */}
+                <div className='d-flex justify-content-between w-100'>
+                  <PageHeading title="Users" />
+                  <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#addNewUserModal">
+                    Create New User
+                  </button>
+                  {/* Modal Add New User */}
+                  <div className="modal fade" id="addNewUserModal" tabIndex={-1} role="dialog" aria-labelledby="addNewUserModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="addNewUserModalLabel">Add New User</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">x</span>
+                          </button>
+                        </div>
+                        <div className="modal-body">
+                          <div className='col-12 pt-1'>
+                            <label style={{color:'grey'}}>Email</label> <br></br>
+                            <input type="email" className="form-control" placeholder="e.g. johndoe@gmail.com"   />
+                          </div>
+                          <div className='col-12 pt-3'>
+                            <label style={{color:'grey'}}>Password</label> <br></br>
+                            <input type="password" className="form-control" placeholder=""   />
+                          </div>
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                          <button type="button" className="btn btn-primary">CONFIRM</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-                <PageHeading title="Users" />
+                </div>
 
                 {/* <!-- Content Row --> */}
                 <div className="row">
@@ -49,41 +81,41 @@ class Users extends Component {
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Gender</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Birthdate</th>
-                                <th scope="col">User Type</th>
-                                <th scope="col">MewCoins Topupped</th>
-                                <th scope="col">MewCoins Withdrawn</th>
+                                <th scope="col">Phone</th>
                                 <th scope="col">Registered At</th>
+                                <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Fernandha Dzaky Saputra</td>
-                                <td>fernandhadzaky</td>
-                                <td>Male</td>
-                                <td>fernandhadzaky@hotmail.com</td>
-                                <td>23 November 1997</td>
-                                <td>Admin</td>
-                                <td>200</td>
-                                <td>-</td>
-                                <td>20 September 2022</td>
-                            </tr>
-                            <tr>
-                                <th >2</th>
-                                <td>Alifio Rasyid</td>
-                                <td>alifiorasyid</td>
-                                <td>Male</td>
-                                <td>alifiorasyid@hotmail.com</td>
-                                <td>01 April 2023</td>
-                                <td>Host</td>
-                                <td>500</td>
-                                <td>200</td>
-                                <td>20 September 2022</td>
-                            </tr>
+                              <tr>
+                                  <th scope="row">1</th>
+                                  <td>Fernandha Dzaky Saputra</td>
+                                  <td>fernandhadzaky@hotmail.com</td>
+                                  <td>+628111377893</td>
+                                  <td>20 September 2022</td>
+                                  <td>
+                                    <div className='d-flex'>
+                                      <button type="button" class="btn btn-primary mr-2">Edit</button>
+                                      <button type="button" class="btn btn-danger ml-2">Delete</button>
+                                    </div>
+
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">2</th>
+                                  <td>Fernandha Dzaky Saputra</td>
+                                  <td>fernandhadzaky@hotmail.com</td>
+                                  <td>+628111377893</td>
+                                  <td>20 September 2022</td>
+                                  <td>
+                                    <div className='d-flex'>
+                                      <button type="button" class="btn btn-primary mr-2">Edit</button>
+                                      <button type="button" class="btn btn-danger ml-2">Delete</button>
+                                    </div>
+
+                                  </td>
+                              </tr>
                             </tbody>
                         </table>
                     </div>

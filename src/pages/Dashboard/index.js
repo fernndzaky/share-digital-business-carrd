@@ -220,37 +220,7 @@ class Dashboard extends Component {
                     </div>
                   </div>
 
-                  {/* Modal Change Password*/}
-                  <div className="modal fade" id="changePasswordModal" tabIndex={-1} role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="changePasswordModalLabel">Change Password</h5>
-                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">x</span>
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          <div className='col-12 pt-1'>
-                            <label style={{color:'grey'}}>Old Password</label> <br></br>
-                            <input type="password" className="form-control"   />
-                          </div>
-                          <div className='col-12 pt-1'>
-                            <label style={{color:'grey'}}>New Password</label> <br></br>
-                            <input type="password" className="form-control"   />
-                          </div>
-                          <div className='col-12 pt-1'>
-                            <label style={{color:'grey'}}>Confirm New Password</label> <br></br>
-                            <input type="password" className="form-control"   />
-                          </div>
-                        </div>
-                        <div className="modal-footer">
-                          <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                          <button type="button" className="btn btn-primary">CONFIRM</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                 
                   {/* END OF WEBSITES*/}
 
 

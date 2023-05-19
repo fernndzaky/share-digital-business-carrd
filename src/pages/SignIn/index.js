@@ -6,7 +6,7 @@ import {Helmet} from "react-helmet";
 
 class SignIn extends Component {
     componentWillMount(){
-        document.getElementById('body').style='background-color:#864A8F'
+        document.getElementById('body').style='background-color:#1A3B7D'
       }
 
       handleSignIn = () => {

@@ -23,14 +23,8 @@ const Routes = () => (
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={SignIn} />
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route path="/signup" component={SignUp} />
-            <Route path="/cards" component={Cards} />
-            <Route path="/charts" component={Charts} />
-            <Route path="/users" component={Users} />
-            <Route path="/earnings" component={Earnings} />
-            <Route path="/transactions" component={Transactions} />
-            <Route path="/advertisements" component={Advertisements} />
-            <Route path="/identity-verification" component={IdentityVerification} />
+            <Route exact path="/dashboard/users" component={Users} />
+            
             <Route path="*" component={NotFound} />
         </Switch>
     </BrowserRouter>

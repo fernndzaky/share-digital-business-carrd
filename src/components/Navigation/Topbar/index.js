@@ -67,7 +67,7 @@ class Topbar extends Component {
 
                 
 
-                  <a className="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/login">
                     <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                   </a>
