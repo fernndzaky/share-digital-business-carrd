@@ -3,9 +3,7 @@ import '../../assets/css/Clients/client.css';
 import '../../assets/css/Clients/home.css';
 import {Helmet} from "react-helmet";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
 import Center from 'react-center';
-
 
 import BlueButton from '../../components/Clients/BlueButton';
 import WhiteButton from '../../components/Clients/WhiteButton';
@@ -45,10 +43,11 @@ class Profile extends React.Component {
           <div style={{width:'500px'}} className="pb-5">
             {/* START OF PROFILE*/}
             <div className='row m-0'>
-              <div className='col-12 p-0' style={{borderBottom:'3px solid black'}}>
-                <img src="/images/Person.png" className='img-fluid' id="profile-picture" alt="Profile Picture" style={{height:'370px',width:'100%',objectFit:'cover'}} />
+              <div className='col-12 p-0'>
+                <img src="/images/Person.png" className='img-fluid' id="profile-picture" alt="Profile Picture" style={{height:'350px',width:'100%',objectFit:'cover'}} />
+                <img src="/images/Wave_Border.png" className='img-fluid' alt="Wave" style={{height:'auto',width:'100%',objectFit:'cover',marginTop:'-60px'}} />
               </div>
-              <div className='col-12 px-4 py-5'>
+              <div className='col-12 px-4 pb-5 pt-2'>
                 <p className="font-size-24 raleway-bold mb-1" style={{color:'#252525'}}>John Doe</p>
                 <p className="font-size-18 lato-regular pb-2" style={{color:'#252525',fontStyle:'italic'}}>Chief Marketing Officer</p>
                 
