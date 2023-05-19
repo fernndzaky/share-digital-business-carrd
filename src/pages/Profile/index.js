@@ -44,7 +44,7 @@ class Profile extends React.Component {
             {/* START OF PROFILE*/}
             <div className='row m-0'>
               <div className='col-12 p-0'>
-                <img src="/images/Person.png" className='img-fluid' id="profile-picture" alt="Profile Picture" style={{height:'350px',width:'100%',objectFit:'cover'}} />
+                <img src="/images/Person.png" className='img-fluid' id="profile-picture" alt="Profile Picture" style={{height:'320px',width:'100%',objectFit:'cover'}} />
                 <img src="/images/Wave_Border.png" className='img-fluid' alt="Wave" style={{height:'auto',width:'100%',objectFit:'cover',marginTop:'-60px'}} />
               </div>
               <div className='col-12 px-4 pb-5 pt-2'>
