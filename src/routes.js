@@ -15,6 +15,7 @@ import Transactions from "./pages/Transactions";
 import Advertisements from "./pages/Advertisements";
 import HomePage from "./pages/Clients/home";
 import IdentityVerification from "./pages/IdentityVerification";
+import Profile from "./pages/Profile";
 
 
 const Routes = () => (
@@ -24,6 +25,7 @@ const Routes = () => (
             <Route exact path="/login" component={SignIn} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/dashboard/users" component={Users} />
+            <Route exact path="/profile/1234" component={Profile} />
             
             <Route path="*" component={NotFound} />
         </Switch>

@@ -50,13 +50,10 @@ function Footer() {
                 <p className="font-size-24 lato-bold mb-3" style={{color:'#FFFFFF'}}>Connect with us</p>
                 <div className='d-flex'>
                     <div className='mr-3'>
-                        <img onClick={()=> window.open("/", "_self")} src="/images/icons/instagram_icon.png" id="footer-social-logo" alt="Logo"className="img-fluid" style={{width:'25px',cursor:'pointer'}} />
+                        <img onClick={()=> window.open("/https://www.instagram.com/smartbizz.id", "_blank")} src="/images/icons/instagram_icon.png" id="footer-social-logo" alt="Logo"className="img-fluid" style={{width:'25px',cursor:'pointer'}} />
                     </div>
                     <div className='mr-3'>
-                        <img onClick={()=> window.open("/", "_self")} src="/images/icons/tiktok_icon.png" id="footer-social-logo" alt="Logo"className="img-fluid" style={{width:'25px',cursor:'pointer'}} />
-                    </div>
-                    <div className='mr-3'>
-                        <img onClick={()=> window.open("/", "_self")} src="/images/icons/youtube_icon.png" id="footer-social-logo" alt="Logo"className="img-fluid" style={{width:'25px',cursor:'pointer'}} />
+                        <img onClick={()=> window.open("/", "_blank")} src="/images/icons/tiktok_icon.png" id="footer-social-logo" alt="Logo"className="img-fluid" style={{width:'25px',cursor:'pointer'}} />
                     </div>
                 </div>
             </div>

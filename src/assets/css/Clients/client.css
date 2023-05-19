@@ -17,6 +17,10 @@
     font-family: 'Raleway Bold', sans-serif !important;
 }
 
+.raleway-semibold{
+    font-family: 'Raleway SemiBold', sans-serif !important;
+}
+
 .lato-bold{
     font-family: 'Lato Bold', sans-serif !important;
 }
@@ -34,6 +38,24 @@
     color: #FFFFFF;
 }
 
+.circle {
+    background: #060D0D;
+    border-radius: 50%;
+    color: black;
+    height: 35px;
+    width: 35px;
+    font-weight: bold;
+  }
+  
+  
+
+  .client-black-button{
+    border: none;
+    background-color: #060D0D;
+    color: white;
+    border-radius: 30px;
+    width: 100%;
+  }
 
 
 /* mobile devices */
@@ -77,6 +99,11 @@
     .font-size-18 {
         font-size: calc(0.8em + 1vmin);
     }   
+    /* Medium font size */
+    .font-size-24 {
+        font-size: calc(1.2em + 1vmin);
+    }
+
 }
 
 /* ipad devices */

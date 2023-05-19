@@ -24,7 +24,7 @@ class Dashboard extends Component {
           </title>
           <meta
               name="description"
-              content="MewCom | Connect users with communication needs to a virtual host"
+              content="Bizz | Elevate Your Connections, Redefine Impressions"
           />
         </Helmet>
         {/* <!-- Page Wrapper --> */}
