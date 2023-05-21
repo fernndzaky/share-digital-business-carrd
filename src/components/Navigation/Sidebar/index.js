@@ -30,7 +30,7 @@ class Sidebar extends Component {
       <ul style={{backgroundColor:'#1A3B7D'}} className={toggled ? 'navbar-nav sidebar sidebar-dark accordion toggled' : 'navbar-nav  sidebar sidebar-dark accordion'} id="accordionSidebar">
 
         {/* <!-- Sidebar - Brand --> */}
-        <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
           <div className="sidebar-brand-icon rotate-n-15">
             <img src="/images/BIZZ_NAME_LOGO_WHITE.png" class="img-fluid" style={{width:'50%'}} />
           </div>
