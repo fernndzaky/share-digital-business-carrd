@@ -19,8 +19,31 @@ class Profile extends React.Component {
   constructor(){
     super()
     this.state = {
+      theme : "black",
+      theme_color : ""
     }
 
+  }
+
+  componentDidMount(){
+    this.changeTheme(this.state.theme)
+  }
+
+  getUserDetail(){
+    this.setState({
+      theme : "black"
+    })
+  }
+
+
+  changeTheme(theme){
+    console.log('changing theme color')
+    if(theme == "black"){
+      this.setState({
+        theme_color : "#060D0D"
+      })
+      console.log("theme changed")
+    }
   }
 
 
@@ -53,7 +76,7 @@ class Profile extends React.Component {
                 
                 <div className='mt-4'>
                   <div className='d-flex align-items-center justify-content-start'>
-                    <div className='circle  d-flex align-items-center justify-content-center'>
+                    <div className='circle  d-flex align-items-center justify-content-center' style={{background:this.state.theme_color}}>
                       <i className="fas fa-phone font-size-18" style={{color:'white'}}></i>
                     </div>
                     <p className="font-size-18 lato-regular mb-0 ml-3" style={{color:'#252525'}}>+62 811 137 7895</p>
@@ -62,7 +85,7 @@ class Profile extends React.Component {
 
                 <div className='mt-4'>
                   <div className='d-flex align-items-center justify-content-start'>
-                    <div className='circle  d-flex align-items-center justify-content-center'>
+                    <div className='circle  d-flex align-items-center justify-content-center' style={{background:this.state.theme_color}}>
                       <i className="fas fa-envelope font-size-18" style={{color:'white'}}></i>
                     </div>
                     <p className="font-size-18 lato-regular mb-0 ml-3" style={{color:'#252525'}}>johndoe@hotmail.com</p>
@@ -73,7 +96,7 @@ class Profile extends React.Component {
                 <div className='mt-4'>
                   <div className='d-flex align-items-center justify-content-start'>
                     <div style={{width:'120px'}}>
-                      <div className='circle  d-flex align-items-center justify-content-center'>
+                      <div className='circle  d-flex align-items-center justify-content-center' style={{background:this.state.theme_color}}>
                         <FontAwesomeIcon icon={faLocationDot} className="font-size-18" style={{color:'white'}} />
                       </div>
 
@@ -83,7 +106,7 @@ class Profile extends React.Component {
                 </div>
 
 
-                <button className='client-black-button raleway-semibold font-size-18 mt-4 py-3'>
+                <button className='client-squared-button raleway-semibold font-size-18 mt-4 py-3' style={{backgroundColor: this.state.theme_color}}>
                   <span>
                     <i className="fa fa-solid fa-user-plus font-size-18 mr-3" style={{color:'white'}}></i>
                   </span>
@@ -101,16 +124,16 @@ class Profile extends React.Component {
                 <p className="font-size-24 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>SOCIAL MEDIA</p>
               </div>
               <div className='col-12 p-0 d-flex justify-content-between align-items-start'>
-                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:'#060D0D',boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
                     <i className="fab fa-instagram font-size-36" style={{color:'white'}}></i>
                   </div>
-                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:'#060D0D',boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
                     <i className="fab fa-twitter font-size-36" style={{color:'white'}}></i>
                   </div>
-                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:'#060D0D',boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
                     <i className="fab fa-linkedin-in font-size-36" style={{color:'white'}}></i>
                   </div>
-                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:'#060D0D',boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
                     <i className="fab fa-tiktok font-size-36" style={{color:'white'}}></i>
                   </div>
               </div>
@@ -125,10 +148,10 @@ class Profile extends React.Component {
                 <p className="font-size-24 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>OTHERS</p>
               </div>
               <div className='col-12 p-0'>
-                  <div style={{backgroundColor:'#060D0D',boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius:'10px',textAlign:'center'}} className="py-3">
+                  <div style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius:'10px',textAlign:'center'}} className="py-3">
                     <p className="font-size-18 raleway-semibold mb-1" style={{color:'#FFFFFF'}}>Shoppee</p>
                   </div>
-                  <div style={{backgroundColor:'#060D0D',boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius:'10px',textAlign:'center'}} className="py-3 mt-3">
+                  <div style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius:'10px',textAlign:'center'}} className="py-3 mt-3">
                     <p className="font-size-18 raleway-semibold mb-1" style={{color:'#FFFFFF'}}>Tokopedia</p>
                   </div>
                   

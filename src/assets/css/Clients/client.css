@@ -39,7 +39,6 @@
 }
 
 .circle {
-    background: #060D0D;
     border-radius: 50%;
     color: black;
     height: 35px;
@@ -49,9 +48,8 @@
   
   
 
-  .client-black-button{
+  .client-squared-button{
     border: none;
-    background-color: #060D0D;
     color: white;
     border-radius: 30px;
     width: 100%;
