@@ -50,7 +50,7 @@ class Sidebar extends Component {
         <li className="nav-item">
           <Link className="nav-link" to="/dashboard/users">
             <i className="fas fa-fw fa-user-alt"></i>
-            <span>Users</span></Link>
+            <span>Users Data</span></Link>
         </li>
 
         
