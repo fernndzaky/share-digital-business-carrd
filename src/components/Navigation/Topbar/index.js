@@ -6,6 +6,12 @@ import { bindActionCreators } from 'redux';
 import { clickMenuOpen } from '../../../redux/actions';
 
 class Topbar extends Component {
+  logout = () => {
+    // Remove JWT from localStorage
+    localStorage.removeItem('jwt');
+    window.location.href = '/login'
+
+  };
     render() {
       const { clickMenuOpen } = this.props;
 
@@ -64,10 +70,7 @@ class Topbar extends Component {
                     <i className="fas fa-lock fa-sm mr-2 text-gray-400"></i>
                     Change Password
                   </a>
-
-                
-
-                  <a className="dropdown-item" href="/login">
+                  <a className="dropdown-item" onClick={() => this.logout()} style={{cursor:'pointer'}}>
                     <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                   </a>
