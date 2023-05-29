@@ -14,7 +14,6 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 
 
-
 class Profile extends React.Component {
 
   constructor(){
@@ -149,7 +148,10 @@ class Profile extends React.Component {
   }
 
 
-  handleContactClick = () => {
+  
+  handleContactClick = (e) => {
+    e.preventDefault()
+
       const contact = {
         name: 'John Doe',
         phone: '+1234567890',
@@ -157,10 +159,26 @@ class Profile extends React.Component {
         address: '123 Main St, City, Country',
       };
   
-      const contactUrl = `tel:${contact.phone}`;
-      window.open(contactUrl);
-    
+      const vCardData = `BEGIN:VCARD
+                        VERSION:3.0
+                        FN:${contact.name}
+                        TEL:${contact.phone}
+                        EMAIL:${contact.email}
+                        ADR:${contact.address}
+                        END:VCARD`;
+  
+      const blob = new Blob([vCardData], { type: 'text/vcard' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'contact.vcf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
     }
+  
+   
 
   render(){
   
@@ -231,7 +249,7 @@ class Profile extends React.Component {
                 </div>
 
 
-                <button onClick={this.handleContactClick()} className='client-squared-button raleway-semibold font-size-18 mt-4 py-3' style={{backgroundColor: this.state.theme_color}}>
+                <button onClick={(e) => this.handleContactClick(e)}  className='client-squared-button raleway-semibold font-size-18 mt-4 py-3' style={{backgroundColor: this.state.theme_color}}>
                   <span>
                     <i className="fa fa-solid fa-user-plus font-size-18 mr-3" style={{color:'white'}}></i>
                   </span>
