@@ -20,7 +20,6 @@ class Dashboard extends Component {
   componentDidMount(){
       this.getUserDetail()
       this.getUserWebsites()
-      this.getUsers()
   }
 
   constructor(){
@@ -44,7 +43,6 @@ class Dashboard extends Component {
         websites : [],
         websiteName : '',
         websiteLink : '',
-        users : [],
     }
   }
 
@@ -65,39 +63,7 @@ class Dashboard extends Component {
     }
   };
 
-  getUsers = async () => {
-    this.notify('Getting users data..')
-
-    try {
-      const headers = {
-        'Content-Type': 'application/json',
-        'accept': '*/*',
-        'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
-      };
   
-  
-      const response = await axios.get('http://localhost:3000/api/all-users', { headers: headers });
-
-  
-      // Handle the response
-      // Assuming the response contains data field with relevant information
-      if(response.status == 200){
-        this.setState({
-          users : response.data.content,
-        })
-      }
-      // Perform any additional actions after successful login
-    } catch (error) {
-      if (error.response) {
-        this.setState({
-          errorMessage : error.response.data.errorMessage
-        })
-      } else {
-        console.error(error);
-      }
-    }
-  }
-
   onChange = async (e) =>{
       this.setState({
         [e.target.name] : e.target.value
