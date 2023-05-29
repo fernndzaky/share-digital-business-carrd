@@ -10,6 +10,7 @@ import BlueButton from '../../components/Clients/BlueButton';
 import WhiteButton from '../../components/Clients/WhiteButton';
 import Footer from '../../components/Clients/Footer';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { createVCard } from 'vcf';
 
 
 
@@ -150,7 +151,6 @@ class Profile extends React.Component {
 
   
   handleContactClick = async (e) => {
-
     // Get the contact information from the website
     var contact = {
       name: this.state.name,
@@ -158,18 +158,27 @@ class Profile extends React.Component {
       email: this.state.email,
       occupation: this.state.occupation
     };
-    // create a vcard file
-    var vcard = "BEGIN:VCARD\nVERSION:4.0\nFN:" + contact.name + "\nTEL;TYPE=work,voice:" + contact.phone + "\nEMAIL:" + contact.email + "\nEND:VCARD";
-    var blob = new Blob([vcard], { type: "text/vcard" });
+  
+    // Create the vCard content
+    var vcardContent =
+      'BEGIN:VCARD\n' +
+      'VERSION:3.0\n' +
+      'N:' + contact.name + '\n' +
+      'TEL;TYPE=work,voice:' + contact.phone + '\n' +
+      'EMAIL:' + contact.email + '\n' +
+      'ROLE:' + contact.occupation + '\n' +
+      'END:VCARD';
+  
+    // Create a Blob from the vCard content
+    var blob = new Blob([vcardContent], { type: 'text/vcard' });
     var url = URL.createObjectURL(blob);
-    
+  
     const newLink = document.createElement('a');
-    newLink.download = contact.name + ".vcf";
+    newLink.download = contact.name + '.vcf';
     newLink.textContent = contact.name;
     newLink.href = url;
-    
+  
     newLink.click();
-   
   }
 
   

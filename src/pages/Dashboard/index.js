@@ -373,10 +373,9 @@ class Dashboard extends Component {
                     <div className='pt-2'>
                       <div className="custom-file">
                         {this.state.isLoading == true ?
-                        <input type="file" disabled onChange={this.handleChange} name= "image" className="custom-file-label" accept=".heic,image/*" />
+                        <input type="file" disabled onChange={this.handleChange} name= "image" className="custom-file-label" accept="image/*" />
                         :
-                        <input type="file"  onChange={this.handleChange} name= "image" className="custom-file-label" accept=".heic,image/*" />
-                        }
+                        <input type="file"  onChange={this.handleChange} name= "image" className="custom-file-label" accept="image/*"/>                        }
 
                       </div>
                     </div>
