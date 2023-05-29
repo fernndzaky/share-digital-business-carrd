@@ -419,6 +419,12 @@ class Dashboard extends Component {
                       <input type="text" value={this.state.name} onChange={this.onChange} name="name" className="form-control" placeholder="e.g. John Doe" aria-label="full_name"  />
                     </div>
                   </div>  
+                  <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                    <div >
+                      <label>Occupation</label> <br></br>
+                      <input type="text" value={this.state.occupation} onChange={this.onChange} name="occupation" className="form-control" placeholder="e.g. John Doe" aria-label="full_name"  />
+                    </div>
+                  </div>  
                   <div className='col-lg-6 col-md-6  col-xs-12 pt-3'>
                     <div >
                       <label>Phone</label> <br></br>

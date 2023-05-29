@@ -167,15 +167,8 @@ class Profile extends React.Component {
                         ADR:${contact.address}
                         END:VCARD`;
   
-      const blob = new Blob([vCardData], { type: 'text/vcard' });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'contact.vcf');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      const dataURI = `data:text/vcard;charset=utf-8,${encodeURIComponent(vCardData)}`;
+      window.open(dataURI, '_blank');
     }
   
    
