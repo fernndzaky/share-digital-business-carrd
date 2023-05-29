@@ -4,6 +4,7 @@ import '../../assets/css/Clients/home.css';
 import {Helmet} from "react-helmet";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Center from 'react-center';
+import axios from 'axios';
 
 import BlueButton from '../../components/Clients/BlueButton';
 import WhiteButton from '../../components/Clients/WhiteButton';
@@ -19,34 +20,149 @@ class Profile extends React.Component {
   constructor(){
     super()
     this.state = {
-      theme : "black",
-      theme_color : ""
+        displayPicture : '',
+        theme : '',
+        name : '',
+        occupation : '',
+        phone : '',
+        email : '',
+        address : '',
+        instagramLink : '',
+        linkedinLink : '',
+        tiktokLink : '',
+        twitterLink : '',
+        isLoading : false,
+        websites : [],
+        websiteName : '',
+        websiteLink : '',
+        theme_color : ""
     }
-
   }
 
   componentDidMount(){
-    this.changeTheme(this.state.theme)
+    this.getUserDetail()
+    this.getUserWebsites()
   }
 
-  getUserDetail(){
+
+
+
+  getUserDetail = async (e) => {
     this.setState({
-      theme : "black"
+      isLoading : true
+    })
+
+    try {
+      const headers = {
+        'Content-Type': 'application/json',
+        'accept': '*/*',
+        'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
+      };
+  
+  
+      const response = await axios.get('https://bizz-bo-production.up.railway.app/api/user/'+ this.props.match.params.id, { headers: headers });
+
+  
+      // Handle the response
+      // Assuming the response contains data field with relevant information
+      if(response.status === 200){
+        this.setState({
+          displayPicture : response.data.content.DisplayPicture,
+          theme : response.data.content.Theme,
+          name : response.data.content.Name,
+          occupation : response.data.content.Occupation,
+          phone : response.data.content.Phone,
+          email : response.data.content.Email,
+          address : response.data.content.Address,
+          instagramLink : response.data.content.InstagramLink,
+          linkedinLink : response.data.content.LinkedinLink,
+          tiktokLink : response.data.content.TiktokLink,
+          twitterLink : response.data.content.TwitterLink,
+        })
+
+        if(this.state.theme === "black-and-white"){
+          this.setState({
+            theme_color : "#060D0D"
+          })
+        }
+        else if(this.state.theme === "blue"){
+          this.setState({
+            theme_color : "#0F547E"
+          })
+        }
+        else if(this.state.theme === "green"){
+          this.setState({
+            theme_color : "#1D3108"
+          })
+        }
+      }
+      // Perform any additional actions after successful login
+    } catch (error) {
+      if (error.response) {
+        this.setState({
+          errorMessage : error.response.data.errorMessage
+        })
+        window.location.href = '/404'
+
+      } else {
+        console.error(error);
+      }
+    }
+      
+    
+
+    this.setState({
+      isLoading : false
     })
   }
 
+  getUserWebsites = async () => {
+    this.setState({
+      isLoading : true
+    })
+    try {
+      const headers = {
+        'Content-Type': 'application/json',
+        'accept': '*/*',
+        'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
+      };
+  
+  
+      const response = await axios.get('https://bizz-bo-production.up.railway.app/api/user/websites/'+ this.props.match.params.id, { headers: headers });
 
-  changeTheme(theme){
-    console.log('changing theme color')
-    if(theme == "black"){
-      this.setState({
-        theme_color : "#060D0D"
-      })
-      console.log("theme changed")
+  
+      // Handle the response
+      // Assuming the response contains data field with relevant information
+      if(response.status === 200){
+        this.setState({
+          websites : response.data.content,
+        })
+      }
+      // Perform any additional actions after successful login
+    } catch (error) {
+      if (error.response) {
+        this.setState({
+          errorMessage : error.response.data.errorMessage
+        })
+      } else {
+        console.error(error);
+      }
     }
   }
 
 
+  handleContactClick = () => {
+      const contact = {
+        name: 'John Doe',
+        phone: '+1234567890',
+        email: 'johndoe@example.com',
+        address: '123 Main St, City, Country',
+      };
+  
+      const contactUrl = `tel:${contact.phone}`;
+      window.open(contactUrl);
+    
+    }
 
   render(){
   
@@ -54,7 +170,7 @@ class Profile extends React.Component {
       <div className="body-container">
         <Helmet>
             <title>
-                Bizz | Elevate Your Connections, Redefine Impressions.
+                Bizz Profile - {this.state.name}
             </title>
             <meta
                 name="description"
@@ -67,46 +183,57 @@ class Profile extends React.Component {
             {/* START OF PROFILE*/}
             <div className='row m-0'>
               <div className='col-12 p-0'>
-                <img src="/images/Person.png" className='img-fluid' id="profile-picture" alt="Profile Picture" style={{height:'320px',width:'100%',objectFit:'cover'}} />
+                <img src={this.state.displayPicture} className='img-fluid' id="profile-picture" alt="Profile Picture" style={{height:'320px',width:'100%',objectFit:'cover'}} />
+                {this.state.theme === "black-and-white" ?
                 <img src="/images/Wave_Border.png" className='img-fluid' alt="Wave" style={{height:'auto',width:'100%',objectFit:'cover',marginTop:'-60px'}} />
+                :  
+                this.state.theme === "blue" ?
+                <img src="/images/Wave_Border_Blue.png" className='img-fluid' alt="Wave" style={{height:'auto',width:'100%',objectFit:'cover',marginTop:'-60px'}} />
+                :
+                <img src="/images/Wave_Border_Green.png" className='img-fluid' alt="Wave" style={{height:'auto',width:'100%',objectFit:'cover',marginTop:'-60px'}} />
+              }
               </div>
               <div className='col-12 px-4 pb-5 pt-2'>
-                <p className="font-size-24 raleway-bold mb-1" style={{color:'#252525'}}>John Doe</p>
-                <p className="font-size-18 lato-regular pb-2" style={{color:'#252525',fontStyle:'italic'}}>Chief Marketing Officer</p>
+                <p className="font-size-24 raleway-bold mb-1" style={{color:'#252525'}}>{this.state.name}</p>
+                <p className="font-size-18 lato-regular pb-2" style={{color:'#252525',fontStyle:'italic'}}>{this.state.occupation}</p>
                 
                 <div className='mt-4'>
                   <div className='d-flex align-items-center justify-content-start'>
-                    <div className='circle  d-flex align-items-center justify-content-center' style={{background:this.state.theme_color}}>
-                      <i className="fas fa-phone font-size-18" style={{color:'white'}}></i>
+                    <div style={{width:'10%'}}>
+                      <div className='circle  d-flex align-items-center justify-content-center' style={{background:this.state.theme_color}}>
+                        <i className="fas fa-phone font-size-18" style={{color:'white'}}></i>
+                      </div>
                     </div>
-                    <p className="font-size-18 lato-regular mb-0 ml-3" style={{color:'#252525'}}>+62 811 137 7895</p>
+                    <p className="font-size-18 lato-regular mb-0 ml-3" style={{color:'#252525'}}>{this.state.phone}</p>
                   </div>
                 </div>
 
                 <div className='mt-4'>
                   <div className='d-flex align-items-center justify-content-start'>
-                    <div className='circle  d-flex align-items-center justify-content-center' style={{background:this.state.theme_color}}>
-                      <i className="fas fa-envelope font-size-18" style={{color:'white'}}></i>
+                    <div style={{width:'10%'}}>
+                      <div className='circle  d-flex align-items-center justify-content-center' style={{background:this.state.theme_color}}>
+                        <i className="fas fa-envelope font-size-18" style={{color:'white'}}></i>
+                      </div>
                     </div>
-                    <p className="font-size-18 lato-regular mb-0 ml-3" style={{color:'#252525'}}>johndoe@hotmail.com</p>
+                    <p className="font-size-18 lato-regular mb-0 ml-3" style={{color:'#252525'}}>{this.state.email}</p>
                   </div>
                 </div>
 
 
                 <div className='mt-4'>
                   <div className='d-flex align-items-center justify-content-start'>
-                    <div style={{width:'120px'}}>
+                    <div style={{width:'10%'}}>
                       <div className='circle  d-flex align-items-center justify-content-center' style={{background:this.state.theme_color}}>
                         <FontAwesomeIcon icon={faLocationDot} className="font-size-18" style={{color:'white'}} />
                       </div>
 
                     </div>
-                    <p className="font-size-18 lato-regular mb-0" style={{color:'#252525'}}>Lantai 52 Tokopedia Tower Ciputra World 2, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta.</p>
+                    <p className="font-size-18 lato-regular mb-0 ml-3" style={{color:'#252525'}}>{this.state.address}</p>
                   </div>
                 </div>
 
 
-                <button className='client-squared-button raleway-semibold font-size-18 mt-4 py-3' style={{backgroundColor: this.state.theme_color}}>
+                <button onClick={this.handleContactClick()} className='client-squared-button raleway-semibold font-size-18 mt-4 py-3' style={{backgroundColor: this.state.theme_color}}>
                   <span>
                     <i className="fa fa-solid fa-user-plus font-size-18 mr-3" style={{color:'white'}}></i>
                   </span>
@@ -119,48 +246,65 @@ class Profile extends React.Component {
             {/* END OF PROFILE*/}
 
             {/* START OF SOCIAL MEDIA*/}
-            <div className='row m-0 px-4 py-4'>
-              <div className='col-12 p-0 mb-3'>
-                <p className="font-size-24 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>SOCIAL MEDIA</p>
+            {this.state.instagramLink !== "" && this.state.twitterLink !== "" && this.state.linkedinLink !== "" && this.state.tiktokLink !== "" &&
+              <div className='row m-0 px-4 py-4'>
+                <div className='col-12 p-0 mb-3'>
+                  <p className="font-size-24 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>SOCIAL MEDIA</p>
+                </div>
+                <div className='col-12 p-0 d-flex justify-content-between align-items-start'>
+                    {this.state.instagramLink != "=" &&
+                      <div onClick={() => window.open(this.state.instagramLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                        <i className="fab fa-instagram font-size-36" style={{color:'white'}}></i>
+                      </div>
+                    }
+                    {this.state.twitterLink !== "" &&
+                      <div onClick={() => window.open(this.state.twitterLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                        <i className="fab fa-twitter font-size-36" style={{color:'white'}}></i>
+                      </div>
+                    }
+                    {this.state.linkedinLink !== "" &&
+                      <div onClick={() => window.open(this.state.linkedinLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                        <i className="fab fa-linkedin-in font-size-36" style={{color:'white'}}></i>
+                      </div>
+                    }
+                    {this.state.tiktokLink !== "" &&
+                      <div onClick={() => window.open(this.state.tiktokLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                        <i className="fab fa-tiktok font-size-36" style={{color:'white'}}></i>
+                      </div>
+                    }
+                </div>
               </div>
-              <div className='col-12 p-0 d-flex justify-content-between align-items-start'>
-                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
-                    <i className="fab fa-instagram font-size-36" style={{color:'white'}}></i>
-                  </div>
-                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
-                    <i className="fab fa-twitter font-size-36" style={{color:'white'}}></i>
-                  </div>
-                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
-                    <i className="fab fa-linkedin-in font-size-36" style={{color:'white'}}></i>
-                  </div>
-                  <div className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
-                    <i className="fab fa-tiktok font-size-36" style={{color:'white'}}></i>
-                  </div>
-              </div>
-             
-              
-            </div>
+            
+            }
             {/* END OF SOCIAL MEDIA*/}
 
             {/* START OF WEBSITES*/}
+            {this.state.websites.length > 0 &&
+            
             <div className='row m-0 px-4 py-4'>
               <div className='col-12 p-0 mb-3'>
                 <p className="font-size-24 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>OTHERS</p>
               </div>
               <div className='col-12 p-0'>
-                  <div style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius:'10px',textAlign:'center'}} className="py-3">
-                    <p className="font-size-18 raleway-semibold mb-1" style={{color:'#FFFFFF'}}>Shoppee</p>
+              {
+                    this.state.websites.map( (e , index) => {
+                      return(
+                        <React.Fragment>
+                            {
+                  <div  onClick={() => window.open(e.WebsiteLink, '_blank')} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius:'10px',textAlign:'center'}} className="py-3">
+                    <p className="font-size-18 raleway-semibold mb-1" style={{color:'#FFFFFF'}}>{e.WebsiteName}</p>
                   </div>
-                  <div style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius:'10px',textAlign:'center'}} className="py-3 mt-3">
-                    <p className="font-size-18 raleway-semibold mb-1" style={{color:'#FFFFFF'}}>Tokopedia</p>
-                  </div>
+                    } 
+                    </React.Fragment>
+                  )
+                })              
+              } 
                   
-              </div>
-             
-              
+              </div>      
             </div>
+            }
             {/* END OF WEBSITES*/}
-
+            
 
 
           </div>
