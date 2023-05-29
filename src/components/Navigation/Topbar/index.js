@@ -9,6 +9,9 @@ class Topbar extends Component {
   logout = () => {
     // Remove JWT from localStorage
     localStorage.removeItem('jwt');
+    localStorage.removeItem('uid');
+    localStorage.removeItem('ur');
+    localStorage.removeItem('name');
     window.location.href = '/login'
 
   };
@@ -61,7 +64,7 @@ class Topbar extends Component {
               {/* <!-- Nav Item - User Information --> */}
               <li className="nav-item dropdown no-arrow">
                 <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span className="mr-2 d-none d-lg-inline text-gray-600 small">John Doe</span>
+                <span className="mr-2 d-none d-lg-inline text-gray-600 small">Hi User!</span>
                   <img className="img-profile rounded-circle" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
                 </a>
                 {/* <!-- Dropdown - User Information --> */}

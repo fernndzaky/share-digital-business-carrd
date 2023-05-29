@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 //Navigation
 import Sidebar from '../../components/Navigation/Sidebar';
 import Topbar from '../../components/Navigation/Topbar';
-
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CardInfo from '../../components/Cards/Info';
 import ChartDonut from '../../components/Charts/Donut';
 import ChartLine from '../../components/Charts/Line';
@@ -12,7 +14,139 @@ import PageHeading from '../../components/PageHeading';
 class Users extends Component {
   componentWillMount() {
     document.getElementById('body').className = 'page-top'
+    if(localStorage.getItem("ur") != "admin"){
+      window.location.href = "/dashboard/profile/"+localStorage.getItem("uid");
+
+    }
   }
+
+  componentDidMount(){
+    this.getUsers()
+  }
+
+  constructor(){
+    super()
+    this.state = {
+        isLoading : false,
+        users : [],
+        email: '',
+        password: ''
+    }
+  }
+
+  onChange = async (e) =>{
+    this.setState({
+      [e.target.name] : e.target.value
+    })
+  }
+
+  addNewUser = async (e) => {
+    e.preventDefault()
+    try{
+    this.notify('Creating User..')
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'accept': '*/*',
+      'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
+    };
+
+    const data = {
+        "Email"         : this.state.email,
+        "Password"          : this.state.password,
+    }
+
+
+    const response = await axios.post('https://bizz-bo-production.up.railway.app/api/signup', data, { headers: headers });
+    if(response.status == 200){
+      this.setState({
+        errorMessage :''
+      })
+      this.notify('User created!')
+    }
+    
+    }
+    catch (error) {
+      if (error.response) {
+        this.setState({
+          errorMessage : error.response.data.errorMessage
+        })
+      } else {
+        console.error(error);
+      }
+    }
+  }
+  
+
+  getUsers = async () => {
+    this.notify('Getting users data..')
+
+    try {
+      const headers = {
+        'Content-Type': 'application/json',
+        'accept': '*/*',
+        'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
+      };
+  
+  
+      const response = await axios.get('http://localhost:3000/api/user/all', { headers: headers });
+
+  
+      // Handle the response
+      // Assuming the response contains data field with relevant information
+      if(response.status == 200){
+        this.setState({
+          users : response.data.content,
+        })
+      }
+      // Perform any additional actions after successful login
+    } catch (error) {
+      if (error.response) {
+        this.setState({
+          errorMessage : error.response.data.errorMessage
+        })
+      } else {
+        console.error(error);
+      }
+    }
+  }
+
+  deleteUser = async(uid) => {
+    this.notify('Deleting user..')
+
+    this.setState({
+      isLoading : true
+    })
+    try {
+      const headers = {
+        'Content-Type': 'application/json',
+        'accept': '*/*',
+        'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
+      };
+  
+  
+      const response = await axios.delete('https://bizz-bo-production.up.railway.app/api/user/delete/'+ uid, { headers: headers });
+
+  
+      // Handle the response
+      // Assuming the response contains data field with relevant information
+      if(response.status == 200){
+        this.notify('Delete successfull!..')
+
+        this.getUsers()
+      }
+      // Perform any additional actions after successful login
+    } catch (error) {
+      if (error.response) {
+        this.setState({
+          errorMessage : error.response.data.errorMessage
+        })
+      } else {
+        console.error(error);
+      }
+    }
+  }
+  notify = (message) => toast(message);
 
   render() {
     return (
@@ -45,6 +179,8 @@ class Users extends Component {
                   </button>
                   {/* Modal Add New User */}
                   <div className="modal fade" id="addNewUserModal" tabIndex={-1} role="dialog" aria-labelledby="addNewUserModalLabel" aria-hidden="true">
+                    <form action="" method="POST" onSubmit={(e) => this.addNewUser(e)}>
+
                     <div className="modal-dialog" role="document">
                       <div className="modal-content">
                         <div className="modal-header">
@@ -56,30 +192,32 @@ class Users extends Component {
                         <div className="modal-body">
                           <div className='col-12 pt-1'>
                             <label style={{color:'grey'}}>Email</label> <br></br>
-                            <input type="email" className="form-control" placeholder="e.g. johndoe@gmail.com"   />
+                            <input type="email" value={this.state.email} onChange={this.onChange} name="email" required className="form-control" placeholder="e.g. johndoe@gmail.com"   />
                           </div>
                           <div className='col-12 pt-3'>
                             <label style={{color:'grey'}}>Password</label> <br></br>
-                            <input type="password" className="form-control" placeholder=""   />
+                            <input type="password" value={this.state.password} onChange={this.onChange} name="password" required className="form-control" placeholder=""   />
                           </div>
                         </div>
                         <div className="modal-footer">
                           <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                          <button type="button" className="btn btn-primary">CONFIRM</button>
+                          <button type="submit" className="btn btn-primary">CONFIRM</button>
                         </div>
                       </div>
                     </div>
+                    </form>
                   </div>
 
                 </div>
 
                 {/* <!-- Content Row --> */}
-                <div className="row">
+                <div className="row pt-4">
                     <div style={{width:'100%'}}>
                         <table className="table table-hover table-responsive">
                             <thead className="thead-dark">
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">UID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
@@ -88,34 +226,32 @@ class Users extends Component {
                             </tr>
                             </thead>
                             <tbody>
+                            {
+                    this.state.users.map( (e , index) => {
+                      return(
+                        <React.Fragment>
+                            {
                               <tr>
-                                  <th scope="row">1</th>
-                                  <td>Fernandha Dzaky Saputra</td>
-                                  <td>fernandhadzaky@hotmail.com</td>
-                                  <td>+628111377893</td>
-                                  <td>20 September 2022</td>
+                                  <th scope="row">{index+1} </th>
+                                  <td>{e.ID}</td>
+                                  <td>{e.Name}</td>
+                                  <td>{e.Email}</td>
+                                  <td>{e.Phone}</td>
+                                  <td>{e.CreatedAt}</td>
                                   <td>
                                     <div className='d-flex'>
-                                      <button type="button" class="btn btn-primary mr-2">Edit</button>
-                                      <button type="button" class="btn btn-danger ml-2">Delete</button>
+                                    <button type="button" onClick={() => this.deleteUser(e.ID)}  className="btn btn-danger pt-2 ml-2">
+                                      Delete
+                                    </button>
                                     </div>
 
                                   </td>
                               </tr>
-                              <tr>
-                                  <th scope="row">2</th>
-                                  <td>Fernandha Dzaky Saputra</td>
-                                  <td>fernandhadzaky@hotmail.com</td>
-                                  <td>+628111377893</td>
-                                  <td>20 September 2022</td>
-                                  <td>
-                                    <div className='d-flex'>
-                                      <button type="button" class="btn btn-primary mr-2">Edit</button>
-                                      <button type="button" class="btn btn-danger ml-2">Delete</button>
-                                    </div>
-
-                                  </td>
-                              </tr>
+                               } 
+                               </React.Fragment>
+                             )
+                           })              
+                         } 
                             </tbody>
                         </table>
                     </div>
@@ -157,7 +293,14 @@ class Users extends Component {
         {/* <!-- Scroll to Top Button--> */}
         <a className="scroll-to-top rounded" href="#page-top">
           <i className="fas fa-angle-up"></i>
-        </a></div>
+        </a>
+
+        <ToastContainer
+            
+            autoClose={5000}
+            />
+        
+        </div>
     )
   }
 }

@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import {Helmet} from "react-helmet";
+import Cookies from "universal-cookie"
 
 
 class SignIn extends Component {
@@ -21,6 +22,7 @@ class SignIn extends Component {
 
     componentWillMount(){
       document.getElementById('body').style='background-color:#1A3B7D'
+  
     }
 
     onChange = async (e) =>{
@@ -30,18 +32,19 @@ class SignIn extends Component {
     }
 
     signIn = async (e) => {
-      e.preventDefault()
-      this.notify('Logging In..')
-  
+      e.preventDefault()  
+      const cookies = new Cookies();
+
       this.setState({
         isLoading : true
       })
-      if(this.state.email == "" || this.state.password == ""){
+      if(this.state.email === "" || this.state.password === ""){
         this.setState({
           errorMessage : "All fields must be filled!"
         })
       }
       else{
+        this.notify('Logging In..')
 
         try {
           const headers = {
@@ -58,9 +61,15 @@ class SignIn extends Component {
       
           // Handle the response
           console.log(response.status); // Assuming the response contains data field with relevant information
-          if(response.status == 200){
+          if(response.status === 200){
+            cookies.set("Authorization", response.data.token,{
+              expires: new Date(response.data.token * 1000)
+              })
             localStorage.setItem("jwt",response.data.token)
-            window.location.href = '/dashboard'
+            localStorage.setItem("uid",response.data.content.ID)
+            localStorage.setItem("ur",response.data.content.UserRole)
+            localStorage.setItem("name",response.data.content.Name)
+            window.location.href = '/dashboard/profile/'+response.data.content.ID
           }
           // Perform any additional actions after successful login
         } catch (error) {

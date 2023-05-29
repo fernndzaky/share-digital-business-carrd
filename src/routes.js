@@ -16,16 +16,29 @@ import Advertisements from "./pages/Advertisements";
 import HomePage from "./pages/Clients/home";
 import IdentityVerification from "./pages/IdentityVerification";
 import Profile from "./pages/Profile";
+import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
+
 
 
 const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/login" component={SignIn} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/dashboard/users" component={Users} />
-            <Route exact path="/profile/1234" component={Profile} />
+            <Route exact path="/profile/:id" component={Profile} />
+
+            <IsUserRedirect  exact path="/login" loggedInPath={"/dashboard/profile/"+localStorage.getItem("uid")}>
+                <Route path="/login" exact={true} component={SignIn} />
+            </IsUserRedirect>
+
+
+            <ProtectedRoute  exact path="/dashboard/profile/:id">
+                <Route exact path="/dashboard/profile/:id" component={Dashboard} />
+            </ProtectedRoute>
+            <ProtectedRoute  exact path="/dashboard/users">
+                <Route exact path="/dashboard/users" component={Users} />
+            </ProtectedRoute>
+
+
             
             <Route path="*" component={NotFound} />
         </Switch>

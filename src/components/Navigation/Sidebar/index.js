@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { clickMenuOpen } from '../../../redux/actions';
@@ -24,6 +26,65 @@ class Sidebar extends Component {
 
   // }
 
+
+  constructor(){
+    super()
+    this.state = {
+        oldPassword : '',
+        newPassword : '',
+        confirmNewPassword : '',
+        errorMessage : '',
+        isLoading : false,
+    }
+  }
+
+  onChange = async (e) =>{
+    this.setState({
+      [e.target.name] : e.target.value
+    })
+  }
+
+  updatePassword = async (e) => {
+    e.preventDefault()
+    try{
+    this.notify('Updating Password..')
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'accept': '*/*',
+      'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
+    };
+
+    const data = {
+        "OldPassword"         : this.state.oldPassword,
+        "NewPassword"          : this.state.newPassword,
+        "ConfirmNewPassword"    : this.state.confirmNewPassword,
+    }
+
+
+    const response = await axios.put('https://bizz-bo-production.up.railway.app/api/change-password/'+ localStorage.getItem("uid"), data, { headers: headers });
+    if(response.status == 200){
+      this.setState({
+        errorMessage :''
+      })
+      this.notify('Password updated!')
+    }
+    
+    }
+    catch (error) {
+      if (error.response) {
+        this.setState({
+          errorMessage : error.response.data.errorMessage
+        })
+      } else {
+        console.error(error);
+      }
+    }
+  }
+
+  notify = (message) => toast(message);
+
+
   render() {
     const { clickMenuOpen, toggled } = this.props;
     return (
@@ -41,17 +102,20 @@ class Sidebar extends Component {
 
         {/* <!-- Nav Item - Dashboard --> */}
         <li className="nav-item">
-          <Link className="nav-link" to="/dashboard">
+          <Link className="nav-link" to={"/dashboard/profile/"+localStorage.getItem("uid")}>
             <i className="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></Link>
         </li>
 
         {/* <!-- Nav Item - Users --> */}
+        {localStorage.getItem("ur") == "admin" 
+        &&
         <li className="nav-item">
           <Link className="nav-link" to="/dashboard/users">
             <i className="fas fa-fw fa-user-alt"></i>
             <span>Users Data</span></Link>
         </li>
+        }
 
         
         
@@ -83,6 +147,8 @@ class Sidebar extends Component {
 
          {/* Modal Change Password*/}
                   <div className="modal fade" id="changePasswordModal" tabIndex={-1} role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                    <form action="" method="PUT" onSubmit={(e) => this.updatePassword(e)}>
+
                     <div className="modal-dialog" role="document">
                       <div className="modal-content">
                         <div className="modal-header">
@@ -93,24 +159,28 @@ class Sidebar extends Component {
                         </div>
                         <div className="modal-body">
                           <div className='col-12 pt-1'>
+                            <h5 style={{color:'red'}}>{this.state.errorMessage}</h5>
+                          </div>
+                          <div className='col-12 pt-1'>
                             <label style={{color:'grey'}}>Old Password</label> <br></br>
-                            <input type="password" className="form-control"   />
+                            <input type="password" value={this.state.oldPassword} onChange={this.onChange} name="oldPassword" required className="form-control"   />
                           </div>
                           <div className='col-12 pt-1'>
                             <label style={{color:'grey'}}>New Password</label> <br></br>
-                            <input type="password" className="form-control"   />
+                            <input type="password" value={this.state.newPassword} onChange={this.onChange} name="newPassword" required className="form-control"   />
                           </div>
                           <div className='col-12 pt-1'>
                             <label style={{color:'grey'}}>Confirm New Password</label> <br></br>
-                            <input type="password" className="form-control"   />
+                            <input type="password" value={this.state.confirmNewPassword} onChange={this.onChange} name="confirmNewPassword" required className="form-control"   />
                           </div>
                         </div>
                         <div className="modal-footer">
                           <button type="button" className="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-                          <button type="button" className="btn btn-primary">CONFIRM</button>
+                          <button  type="submit" className="btn btn-primary">CONFIRM</button>
                         </div>
                       </div>
                     </div>
+                    </form>
                   </div>
 
 
