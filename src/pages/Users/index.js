@@ -89,7 +89,7 @@ class Users extends Component {
       };
   
   
-      const response = await axios.get('http://localhost:3000/api/user/all', { headers: headers });
+      const response = await axios.get('https://bizz-bo-production.up.railway.app/api/user/all', { headers: headers });
 
   
       // Handle the response

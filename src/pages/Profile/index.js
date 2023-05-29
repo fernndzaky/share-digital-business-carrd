@@ -151,7 +151,7 @@ class Profile extends React.Component {
   
   handleContactClick = (e) => {
     e.preventDefault()
-
+      console.log("clicked")
       const contact = {
         name: 'John Doe',
         phone: '+1234567890',
