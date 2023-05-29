@@ -149,27 +149,38 @@ class Profile extends React.Component {
 
 
   
-  handleContactClick = (e) => {
+  handleContactClick = async (e) => {
+
     e.preventDefault()
-      console.log("clicked")
-      const contact = {
-        name: 'John Doe',
-        phone: '+1234567890',
-        email: 'johndoe@example.com',
-        address: '123 Main St, City, Country',
-      };
-  
-      const vCardData = `BEGIN:VCARD
-                        VERSION:3.0
-                        FN:${contact.name}
-                        TEL:${contact.phone}
-                        EMAIL:${contact.email}
-                        ADR:${contact.address}
-                        END:VCARD`;
-  
-      const dataURI = `data:text/vcard;charset=utf-8,${encodeURIComponent(vCardData)}`;
-      window.open(dataURI, '_blank');
+    try{
+
+    console.log("creataing user..")
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'accept': '*/*',
+    };
+
+
+    const response = await axios.post('http://localhost:3000/api/create/contact', { headers: headers });
+    if(response.status == 200){
+      this.setState({
+        errorMessage :''
+      })
     }
+    
+    }
+    catch (error) {
+      if (error.response) {
+        this.setState({
+          errorMessage : error.response.data.errorMessage
+        })
+      } else {
+        console.error(error);
+      }
+    }
+  }
+
   
    
 
