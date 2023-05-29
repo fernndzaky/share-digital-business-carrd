@@ -28,15 +28,15 @@ class Dashboard extends Component {
         displayPicture : '',
         userRole : '',
         theme : '',
-        name : '',
-        occupation : '',
-        phone : '',
-        email : '',
-        address : '',
-        instagramLink : '',
-        linkedinLink : '',
-        tiktokLink : '',
-        twitterLink : '',
+        name : null,
+        occupation : null,
+        phone : null,
+        email : null,
+        address : null,
+        instagramLink : null,
+        linkedinLink : null,
+        tiktokLink : null,
+        twitterLink : null,
         submitFailed : false,
         isLoading : false,
         image: null,
@@ -90,7 +90,7 @@ class Dashboard extends Component {
   
       // Handle the response
       // Assuming the response contains data field with relevant information
-      if(response.status == 200){
+      if(response.status === 200){
         this.setState({
           displayPicture : response.data.content.DisplayPicture,
           theme : response.data.content.Theme,
@@ -147,9 +147,11 @@ class Dashboard extends Component {
         "TwitterLink"   : this.state.twitterLink
     }
 
+    console.log(data)
 
-    const response = await axios.put('https://bizz-bo-production.up.railway.app/api/user/update/'+ this.props.match.params.id, data, { headers: headers });
-    if(response.status == 200){
+
+    const response = await axios.put('http://localhost:3000/api/user/update/'+ this.props.match.params.id, data, { headers: headers });
+    if(response.status === 200){
       this.setState({
         errorMessage :''
       })
@@ -186,7 +188,7 @@ class Dashboard extends Component {
   
       // Handle the response
       console.log(response.data); // Assuming the response contains the uploaded image information
-      if(response.status == 200){
+      if(response.status === 200){
         this.setState({
           errorMessage :'',
           displayPicture : response.data.content.DisplayPicture,
@@ -225,7 +227,7 @@ class Dashboard extends Component {
   
       // Handle the response
       // Assuming the response contains data field with relevant information
-      if(response.status == 200){
+      if(response.status === 200){
         this.setState({
           websites : response.data.content,
         })
@@ -261,7 +263,7 @@ class Dashboard extends Component {
   
       // Handle the response
       // Assuming the response contains data field with relevant information
-      if(response.status == 200){
+      if(response.status === 200){
         this.notify('Delete successfull!..')
 
         this.getUserWebsites()
@@ -297,7 +299,7 @@ class Dashboard extends Component {
 
 
     const response = await axios.post('https://bizz-bo-production.up.railway.app/api/website/create/'+this.props.match.params.id, data, { headers: headers });
-    if(response.status == 200){
+    if(response.status === 200){
       this.setState({
         errorMessage :''
       })
@@ -372,7 +374,7 @@ class Dashboard extends Component {
                     <h5>Display Picture</h5> 
                     <div className='pt-2'>
                       <div className="custom-file">
-                        {this.state.isLoading == true ?
+                        {this.state.isLoading === true ?
                         <input type="file" disabled onChange={this.handleChange} name= "image" className="custom-file-label" accept="image/*" />
                         :
                         <input type="file"  onChange={this.handleChange} name= "image" className="custom-file-label" accept="image/*"/>                        }
@@ -383,7 +385,7 @@ class Dashboard extends Component {
                       <img style={{width:'50%',height:'350px',objectFit:'contain'}} src={this.state.displayPicture} alt="Display Picture" className="img-thumbnail" />
                     </div>
                     <div className='pt-3'>
-                    {this.state.isLoading == true ?
+                    {this.state.isLoading === true ?
                       <button type="submit" disabled class="btn btn-primary">LOADING..</button>
                     :
                       <button type="submit" class="btn btn-primary">UPDATE DISPLAY PICTURE</button>
@@ -491,7 +493,7 @@ class Dashboard extends Component {
                   {/* START OF WEBSITES*/}
                   <div className='col-12  mt-5'>
                     <h5>Websites</h5> 
-                    {this.state.websites.length == 0 &&
+                    {this.state.websites.length === 0 &&
                       <p style={{color:'orange'}}>You have no websites! added</p>
                     }
                   </div>

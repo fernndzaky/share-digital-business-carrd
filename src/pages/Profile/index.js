@@ -35,16 +35,47 @@ class Profile extends React.Component {
         websites : [],
         websiteName : '',
         websiteLink : '',
-        theme_color : ""
+        theme_color : "",
+        socialMediaCounter : 0
     }
   }
 
   componentDidMount(){
     this.getUserDetail()
     this.getUserWebsites()
+    this.countSocialMedia()
   }
 
+  countSocialMedia = async () => {
+    if(this.state.instagramLink !== ""){
+      this.setState({
+        socialMediaCounter : this.state.socialMediaCounter+1
+      })
+      console.log(this.state.socialMediaCounter)
+    }
+    if(this.state.linkedinLink !== ""){
+      this.setState({
+        socialMediaCounter : this.state.socialMediaCounter+1
+      })
+      console.log(this.state.socialMediaCounter)
 
+    }
+    if(this.state.twitterLink !== ""){
+      this.setState({
+        socialMediaCounter : this.state.socialMediaCounter+1
+      })
+      console.log(this.state.socialMediaCounter)
+
+    }
+    if(this.state.tiktokLink !== ""){
+      this.setState({
+        socialMediaCounter : this.state.socialMediaCounter+1
+      })
+
+            console.log(this.state.socialMediaCounter)
+
+    }
+  }
 
 
   getUserDetail = async (e) => {
@@ -78,6 +109,8 @@ class Profile extends React.Component {
           tiktokLink : response.data.content.TiktokLink,
           twitterLink : response.data.content.TwitterLink,
         })
+
+        this.countSocialMedia()
 
         if(this.state.theme === "black-and-white"){
           this.setState({
@@ -215,7 +248,7 @@ class Profile extends React.Component {
               </div>
               <div className='col-12 px-4 pb-5 pt-2'>
                 <p className="font-size-24 raleway-bold mb-1" style={{color:'#252525'}}>{this.state.name}</p>
-                <p className="font-size-18 lato-regular pb-2" style={{color:'#252525',fontStyle:'italic'}}>{this.state.occupation}</p>
+                <p className="font-size-18 lato-regular pb-2" style={{color:'#252525',fontStyle:'italic'}}>{this.state.occupation} {this.state.socialMediaCounter}</p>
                 
                 <div className='mt-4'>
                   <div className='d-flex align-items-center justify-content-start'>
@@ -271,24 +304,25 @@ class Profile extends React.Component {
                 <div className='col-12 p-0 mb-3'>
                   <p className="font-size-24 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>SOCIAL MEDIA</p>
                 </div>
-                <div className='col-12 p-0 d-flex justify-content-between align-items-start'>
+                
+                <div className={this.state.socialMediaCounter < 3 ? 'col-12 p-0 d-flex justify-content-start align-items-start':  'col-12 p-0 d-flex justify-content-between align-items-start'} >
                     {this.state.instagramLink !== "=" &&
                       <div onClick={() => window.open(this.state.instagramLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
                         <i className="fab fa-instagram font-size-36" style={{color:'white'}}></i>
                       </div>
                     }
                     {this.state.twitterLink !== "" &&
-                      <div onClick={() => window.open(this.state.twitterLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                      <div onClick={() => window.open(this.state.twitterLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
                         <i className="fab fa-twitter font-size-36" style={{color:'white'}}></i>
                       </div>
                     }
                     {this.state.linkedinLink !== "" &&
-                      <div onClick={() => window.open(this.state.linkedinLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                      <div onClick={() => window.open(this.state.linkedinLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
                         <i className="fab fa-linkedin-in font-size-36" style={{color:'white'}}></i>
                       </div>
                     }
                     {this.state.tiktokLink !== "" &&
-                      <div onClick={() => window.open(this.state.tiktokLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                      <div onClick={() => window.open(this.state.tiktokLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
                         <img src="/images/icons/tiktok_icon_small.png" className='img-fluid' alt="Tiktok" style={{width:'25px'}} />
 
                       </div>
