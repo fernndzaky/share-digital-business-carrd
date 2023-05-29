@@ -257,13 +257,13 @@ class Profile extends React.Component {
             {/* END OF PROFILE*/}
 
             {/* START OF SOCIAL MEDIA*/}
-            {this.state.instagramLink !== "" && this.state.twitterLink !== "" && this.state.linkedinLink !== "" && this.state.tiktokLink !== "" &&
+            {(this.state.instagramLink !== "" || this.state.twitterLink !== "" || this.state.linkedinLink !== "" || this.state.tiktokLink !== "") &&
               <div className='row m-0 px-4 py-4'>
                 <div className='col-12 p-0 mb-3'>
                   <p className="font-size-24 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>SOCIAL MEDIA</p>
                 </div>
                 <div className='col-12 p-0 d-flex justify-content-between align-items-start'>
-                    {this.state.instagramLink != "=" &&
+                    {this.state.instagramLink !== "=" &&
                       <div onClick={() => window.open(this.state.instagramLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
                         <i className="fab fa-instagram font-size-36" style={{color:'white'}}></i>
                       </div>
@@ -280,7 +280,8 @@ class Profile extends React.Component {
                     }
                     {this.state.tiktokLink !== "" &&
                       <div onClick={() => window.open(this.state.tiktokLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
-                        <i className="fab fa-tiktok font-size-36" style={{color:'white'}}></i>
+                        <img src="/images/icons/tiktok_icon_small.png" className='img-fluid' alt="Tiktok" style={{width:'25px'}} />
+
                       </div>
                     }
                 </div>
@@ -315,6 +316,16 @@ class Profile extends React.Component {
             </div>
             }
             {/* END OF WEBSITES*/}
+
+            {/* FOOTER */}
+            <div className='row m-0 px-4 py-4 mt-5' style={{borderTop:'1px solid #252525'}}>
+              <div className='col-12 p-0 mb-3 d-flex align-items-center justify-content-center'>
+                <img src="/images/BIZZ_NAME_LOGO.png" className='img-fluid' alt="Bizz Logo" style={{width:'25%'}} />
+              </div>   
+              <div className='col-12 p-0 mb-3 d-flex align-items-center justify-content-center'>
+                <a href="http://smartbizz.id/" target="_blank" className="font-size-18 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>POWERED BY &copy; BIZZ 2023</a>
+              </div>   
+            </div>
             
 
 

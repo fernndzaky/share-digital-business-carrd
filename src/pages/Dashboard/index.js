@@ -354,8 +354,14 @@ class Dashboard extends Component {
               <div className="container-fluid">
 
                 {/* <!-- Page Heading --> */}
+                <div className="row">
+                  {/* START OF DISPLAY PICTURE */}
+                  <div className='col-12 d-flex align-items-center justify-content-between'>
+                    <PageHeading title="Dashboard" />
+                    <button onClick={() => window.open('https://www.smartbizz.id/profile/'+localStorage.getItem("uid"), '_blank')} class="btn btn-primary">VIEW PROFILE</button>
 
-                <PageHeading title="Dashboard" />
+                  </div>
+              </div>
 
                 {/* <!-- Content Row --> */}
                 <form onSubmit={this.handleImageSubmit}>
@@ -367,9 +373,9 @@ class Dashboard extends Component {
                     <div className='pt-2'>
                       <div className="custom-file">
                         {this.state.isLoading == true ?
-                        <input type="file" disabled onChange={this.handleChange} name= "image" className="custom-file-label" accept="image/*"/>
+                        <input type="file" disabled onChange={this.handleChange} name= "image" className="custom-file-label" accept=".heic,image/*" />
                         :
-                        <input type="file"  onChange={this.handleChange} name= "image" className="custom-file-label" accept="image/*"/>
+                        <input type="file"  onChange={this.handleChange} name= "image" className="custom-file-label" accept=".heic,image/*" />
                         }
 
                       </div>
