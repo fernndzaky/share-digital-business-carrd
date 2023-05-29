@@ -304,6 +304,7 @@ class Dashboard extends Component {
         errorMessage :''
       })
       this.notify('Website created!')
+      this.getUserWebsites()
     }
     
     }
