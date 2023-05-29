@@ -153,9 +153,10 @@ class Profile extends React.Component {
 
     // Get the contact information from the website
     var contact = {
-      name: "John Smith",
-      phone: "555-555-5555",
-      email: "john@example.com"
+      name: this.state.name,
+      phone: this.state.phone,
+      email: this.state.email,
+      occupation: this.state.occupation
     };
     // create a vcard file
     var vcard = "BEGIN:VCARD\nVERSION:4.0\nFN:" + contact.name + "\nTEL;TYPE=work,voice:" + contact.phone + "\nEMAIL:" + contact.email + "\nEND:VCARD";
