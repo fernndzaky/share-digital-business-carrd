@@ -82,7 +82,6 @@ class Dashboard extends Component {
       const headers = {
         'Content-Type': 'application/json',
         'accept': '*/*',
-        'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
       };
   
   
@@ -218,7 +217,6 @@ class Dashboard extends Component {
       const headers = {
         'Content-Type': 'application/json',
         'accept': '*/*',
-        'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
       };
   
   

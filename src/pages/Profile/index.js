@@ -56,7 +56,6 @@ class Profile extends React.Component {
       const headers = {
         'Content-Type': 'application/json',
         'accept': '*/*',
-        'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
       };
   
   
@@ -124,7 +123,6 @@ class Profile extends React.Component {
       const headers = {
         'Content-Type': 'application/json',
         'accept': '*/*',
-        'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
       };
   
   
