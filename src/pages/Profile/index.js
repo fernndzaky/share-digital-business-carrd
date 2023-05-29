@@ -151,34 +151,31 @@ class Profile extends React.Component {
   
   handleContactClick = async (e) => {
 
-    e.preventDefault()
-    try{
-
-    console.log("creataing user..")
-
-    const headers = {
-      'Content-Type': 'application/json',
-      'accept': '*/*',
+    const contact = {
+      name: "John Smith",
+      phone: "555-555-5555",
+      email: "john@example.com",
     };
 
-
-    const response = await axios.post('http://localhost:3000/api/create/contact', { headers: headers });
-    if(response.status == 200){
-      this.setState({
-        errorMessage :''
-      })
-    }
+    const vcard = `BEGIN:VCARD
+    VERSION:4.0
+    FN:${contact.name}
+    TEL;TYPE=work,voice:${contact.phone}
+    EMAIL:${contact.email}
+    END:VCARD`;
     
-    }
-    catch (error) {
-      if (error.response) {
-        this.setState({
-          errorMessage : error.response.data.errorMessage
-        })
-      } else {
-        console.error(error);
-      }
-    }
+      const blob = new Blob([vcard], { type: "text/vcard" });
+      const url = URL.createObjectURL(blob);
+    
+      const newLink = document.createElement("a");
+      newLink.download = `${contact.name}.vcf`;
+      newLink.textContent = contact.name;
+      newLink.href = url;
+    
+      document.body.appendChild(newLink);
+      newLink.click();
+      document.body.removeChild(newLink);
+   
   }
 
   
