@@ -248,7 +248,7 @@ class Profile extends React.Component {
               </div>
               <div className='col-12 px-4 pb-5 pt-2'>
                 <p className="font-size-24 raleway-bold mb-1" style={{color:'#252525'}}>{this.state.name}</p>
-                <p className="font-size-18 lato-regular pb-2" style={{color:'#252525',fontStyle:'italic'}}>{this.state.occupation} {this.state.socialMediaCounter}</p>
+                <p className="font-size-18 lato-regular pb-2" style={{color:'#252525',fontStyle:'italic'}}>{this.state.occupation}</p>
                 
                 <div className='mt-4'>
                   <div className='d-flex align-items-center justify-content-start'>
