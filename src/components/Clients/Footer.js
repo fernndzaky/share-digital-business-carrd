@@ -21,8 +21,8 @@ function Footer() {
         <div className='col-lg-3 col-xs-12 p-0 mt-5 d-flex flex-row justify-content-center align-items-start'>
             <div>
                 <p className="font-size-24 lato-bold mb-3" style={{color:'#FFFFFF'}}>Company</p>
-                <p onClick={()=> window.open("/", "_self")} className="font-size-18 lato-regular mb-3" style={{color:'#FFFFFF',cursor:'pointer'}}>About Us</p>
-                <p onClick={()=> window.open("/", "_self")} className="font-size-18 lato-regular mb-3" style={{color:'#FFFFFF',cursor:'pointer'}}>Our Product</p>
+                <p onClick={()=> window.open("#our-product", "_self")} className="font-size-18 lato-regular mb-3" style={{color:'#FFFFFF',cursor:'pointer'}}>About Us</p>
+                <p onClick={()=> window.open("/#our-product", "_self")} className="font-size-18 lato-regular mb-3" style={{color:'#FFFFFF',cursor:'pointer'}}>Our Product</p>
             </div>
         </div>
 
@@ -50,10 +50,10 @@ function Footer() {
                 <p className="font-size-24 lato-bold mb-3" style={{color:'#FFFFFF'}}>Connect with us</p>
                 <div className='d-flex'>
                     <div className='mr-3'>
-                        <img onClick={()=> window.open("/https://www.instagram.com/smartbizz.id", "_blank")} src="/images/icons/instagram_icon.png" id="footer-social-logo" alt="Logo"className="img-fluid" style={{width:'25px',cursor:'pointer'}} />
+                        <img onClick={()=> window.open("https://www.instagram.com/smartbizz.id", "_blank")} src="/images/icons/instagram_icon.png" id="footer-social-logo" alt="Logo"className="img-fluid" style={{width:'25px',cursor:'pointer'}} />
                     </div>
                     <div className='mr-3'>
-                        <img onClick={()=> window.open("/", "_blank")} src="/images/icons/tiktok_icon.png" id="footer-social-logo" alt="Logo"className="img-fluid" style={{width:'25px',cursor:'pointer'}} />
+                        <img onClick={()=> window.open("https://www.tiktok.com/@smartbizz.id", "_blank")} src="/images/icons/tiktok_icon.png" id="footer-social-logo" alt="Logo"className="img-fluid" style={{width:'25px',cursor:'pointer'}} />
                     </div>
                 </div>
             </div>
