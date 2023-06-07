@@ -67,7 +67,9 @@ class Users extends Component {
     
     }
     catch (error) {
+      console.log("error!")
       if (error.response) {
+        console.log( error.response.data.errorMessage)
         this.setState({
           errorMessage : error.response.data.errorMessage
         })
@@ -197,6 +199,9 @@ class Users extends Component {
                           <div className='col-12 pt-3'>
                             <label style={{color:'grey'}}>Password</label> <br></br>
                             <input type="password" value={this.state.password} onChange={this.onChange} name="password" required className="form-control" placeholder=""   />
+                          </div>
+                          <div className='col-12 pt-3'>
+                            <p style={{color:'red'}}>{this.state.errorMessage}</p>
                           </div>
                         </div>
                         <div className="modal-footer">

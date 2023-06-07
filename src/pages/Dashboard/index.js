@@ -150,7 +150,7 @@ class Dashboard extends Component {
     console.log(data)
 
 
-    const response = await axios.put('http://localhost:3000/api/user/update/'+ this.props.match.params.id, data, { headers: headers });
+    const response = await axios.put('https://bizz-bo-production.up.railway.app/api/user/update/'+ this.props.match.params.id, data, { headers: headers });
     if(response.status === 200){
       this.setState({
         errorMessage :''
