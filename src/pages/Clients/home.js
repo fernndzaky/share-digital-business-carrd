@@ -98,10 +98,10 @@ class HomePage extends React.Component {
             <div className='col-12 px-5 py-5 d-flex justify-content-center align-items-center flex-column' id="contact-us">
             <p className="font-size-36 raleway-bold " style={{color:'#FFFFFF'}}>Contact Us</p>
             <p className="font-size-18 lato-regular mt-2 mb-5 px-lg-5" style={{color:'#FFFFFF', textAlign:'center'}}>Looking for a quick and convenient way to reach out to us? Simply tap the button below and open up a WhatsApp chat window. Whether you have a question, need assistance, or want to share your feedback, we're just a message away. Connect with us effortlessly and experience our responsive and friendly customer support!</p>
-            <WhiteButton buttonText={"CHAT WHATSAPP"}></WhiteButton>
+            <WhiteButton onClick={()=> window.open("https://api.whatsapp.com/send?phone=+447498958903&text=Hallo%21%20Bizz%20", "_self")} buttonText={"CHAT WHATSAPP"}></WhiteButton>
 
             </div>
-            {/*
+            {/* 
             <div className='col-12 px-5 py-5' id="contact-us">
                 <div className='p-lg-5 p-4' style={{backgroundColor:'#1A3B7D', borderRadius:'10px'}}>
                     <p className="font-size-36 raleway-bold mb-3" style={{color:'#FFFFFF'}}>Contact Us</p>
