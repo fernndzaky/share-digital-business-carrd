@@ -147,7 +147,6 @@ class Dashboard extends Component {
         "TwitterLink"   : this.state.twitterLink
     }
 
-    console.log(data)
 
 
     const response = await axios.put('https://bizz-bo-production.up.railway.app/api/user/update/'+ this.props.match.params.id, data, { headers: headers });
@@ -187,7 +186,7 @@ class Dashboard extends Component {
       });
   
       // Handle the response
-      console.log(response.data); // Assuming the response contains the uploaded image information
+      // Assuming the response contains the uploaded image information
       if(response.status === 200){
         this.setState({
           errorMessage :'',
@@ -617,7 +616,7 @@ class Dashboard extends Component {
 
         <ToastContainer
             
-            autoClose={5000}
+            autoClose={10000}
             />
       </div>
     )
