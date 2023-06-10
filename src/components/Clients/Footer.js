@@ -29,7 +29,7 @@ function Footer() {
         <div className='col-lg-3 col-xs-12 p-0 mt-5 d-flex flex-row justify-content-center align-items-start'>
             <div>
                 <p className="font-size-24 lato-bold mb-3" style={{color:'#FFFFFF'}}>Get in touch</p>
-                <p onClick={()=> window.open("/", "_self")} className="font-size-18 lato-regular mb-3" style={{color:'#FFFFFF',cursor:'pointer'}}>Contact Us</p>
+                <a  href="https://api.whatsapp.com/send?phone=+447498958903&text=Hallo%20Bizz%21%20" target="_blank"className="font-size-18 lato-regular mb-3" style={{color:'#FFFFFF',cursor:'pointer'}}>Contact Us</a>
             </div>
         </div>
 
@@ -37,7 +37,6 @@ function Footer() {
             <div>
                 <p className="font-size-24 lato-bold mb-3" style={{color:'#FFFFFF'}}>Shop now</p>
                 <p onClick={()=> window.open("/", "_self")}  className="font-size-18 lato-regular mb-3" style={{color:'#FFFFFF',cursor:'pointer'}}>Tokopedia</p>
-                <p onClick={()=> window.open("/", "_self")}  className="font-size-18 lato-regular mb-3" style={{color:'#FFFFFF',cursor:'pointer'}}>Shoppee</p>
 
             </div>
         </div>
