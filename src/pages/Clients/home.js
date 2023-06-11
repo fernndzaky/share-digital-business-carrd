@@ -54,7 +54,7 @@ class HomePage extends React.Component {
                 <div className="col-md-6 pr-5 pl-5 d-flex flex-column justify-content-center align-items-start">
                     <p className="font-size-36 raleway-bold mb-3" style={{color:'#1A3B7D'}}>BIZZ.</p>
                     <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#252525'}}>Experience <span style={{color:'#F8AA8B'}}> seamless </span>  connections and leave <span style={{color:'#FC5543'}}> unforgettable </span> impressions with bizz, the smart business card, redefines networking with style!</p>
-                    <BlueButton buttonText={"LEARN MORE"}></BlueButton>
+                    <BlueButton buttonText={"SHOP NOW"}></BlueButton>
                 </div>
             </div>
         </div>
