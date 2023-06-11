@@ -523,9 +523,13 @@ class Dashboard extends Component {
                     })              
                   } 
                   <div className='col-12 d-flex flex-row-reverse pt-4'>
+                  {this.state.websites.length < 2 ?
                     <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#addWebsiteModal">
                       ADD WEBSITE
                     </button>
+                    :
+                      <p style={{color:'orange'}}>You have reached maximum websites! Please contact our team to add more.</p>
+                    }
                   </div>
                   
 
