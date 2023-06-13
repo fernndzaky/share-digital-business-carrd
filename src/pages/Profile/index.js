@@ -189,7 +189,8 @@ class Profile extends React.Component {
       name: this.state.name,
       phone: this.state.phone,
       email: this.state.email,
-      occupation: this.state.occupation
+      occupation: this.state.occupation,
+      address: this.state.address
     };
   
     // Create the vCard content
@@ -200,6 +201,8 @@ class Profile extends React.Component {
       'TEL;TYPE=work,voice:' + contact.phone + '\n' +
       'EMAIL:' + contact.email + '\n' +
       'ROLE:' + contact.occupation + '\n' +
+      'TITLE:' + contact.occupation + '\n' +
+      'ADR:' + contact.address + '\n' +
       'END:VCARD';
   
     // Create a Blob from the vCard content
@@ -272,7 +275,9 @@ class Profile extends React.Component {
                   </div>
                 </div>
 
-
+                {this.state.address !== "" &&
+                      
+                    
                 <div className='mt-4'>
                   <div className='d-flex align-items-center justify-content-start'>
                     <div style={{width:'10%'}}>
@@ -284,6 +289,7 @@ class Profile extends React.Component {
                     <p className="font-size-18 lato-regular mb-0 ml-3" style={{color:'#252525'}}>{this.state.address}</p>
                   </div>
                 </div>
+                }
 
 
                 <button onClick={(e) => this.handleContactClick(e)}  className='client-squared-button raleway-semibold font-size-18 mt-4 py-3' style={{backgroundColor: this.state.theme_color}}>
