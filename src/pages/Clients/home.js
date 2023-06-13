@@ -67,7 +67,7 @@ class HomePage extends React.Component {
 
             <div className="col-md-6 col-xs-12 pl-5 pr-5 d-flex flex-column justify-content-center align-items-start" id="height-container" style={{height:'70vh'}}> 
                 <p className="font-size-36 raleway-bold mb-3" style={{color:'#FFFFFF'}}> <span style={{color:'#F8AA8B'}}>SMART</span> BUSINESS CARD</p>
-                <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#FFFFFF'}}>Elevate your networking game and make lasting impressions with Bizz, the smart business card that connects you with style and sophistication</p>
+                <p className="font-size-24 lato-semibold mt-2 mb-5" style={{color:'#FFFFFF'}}>A new way to share your contact through a simple tap to a smartphone. Elevate your networking game and make lasting impressions with Bizz.</p>
                 <BlueButton buttonText={"SHOP NOW"}></BlueButton>
             </div>
             <div className="col-md-6 col-xs-12 d-flex flex-row justify-content-center align-items-center" id="image-height-container"  style={{height:'70vh'}}>
