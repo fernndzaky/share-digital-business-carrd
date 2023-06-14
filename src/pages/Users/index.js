@@ -114,6 +114,10 @@ class Users extends Component {
   }
 
   deleteUser = async(uid) => {
+    const confirmed = window.confirm('Are you sure you want to delete this user?');
+    if (!confirmed) {
+      return;
+    }
     this.notify('Deleting user..')
 
     this.setState({
@@ -148,6 +152,48 @@ class Users extends Component {
       }
     }
   }
+
+  resetPassword = async (email) => {
+    const confirmed = window.confirm('Are you sure you want to reset the password?');
+    if (!confirmed) {
+      return;
+    }
+  
+    this.notify('Resetting password...');
+    this.setState({
+      isLoading: true
+    });
+  
+    try {
+      const headers = {
+        'Content-Type': 'application/json',
+        'accept': '*/*',
+        'Authorization': 'Bearer ' + localStorage.getItem('jwt'),
+      };
+  
+      const data = {
+        'email': email
+      };
+  
+      const response = await axios.put('https://bizz-bo-production.up.railway.app/api/reset-password', data, { headers: headers });
+
+      // Handle the response
+      // Assuming the response contains a data field with relevant information
+      if (response.status === 200) {
+        this.notify('Reset password successful!');
+        this.getUsers();
+      }
+      // Perform any additional actions after successful password reset
+    } catch (error) {
+      if (error.response) {
+        this.setState({
+          errorMessage: error.response.data.errorMessage
+        });
+      } else {
+        console.error(error);
+      }
+    }
+  };
   notify = (message) => toast(message);
 
   render() {
@@ -247,6 +293,9 @@ class Users extends Component {
                                     <div className='d-flex'>
                                     <button type="button" onClick={() => this.deleteUser(e.ID)}  className="btn btn-danger pt-2 ml-2">
                                       Delete
+                                    </button>
+                                    <button type="button" onClick={() => this.resetPassword(e.Email)}  className="btn btn-info pt-2 ml-2">
+                                      Reset Password
                                     </button>
                                     </div>
 

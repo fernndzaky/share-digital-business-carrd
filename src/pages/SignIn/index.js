@@ -135,13 +135,19 @@ class SignIn extends Component {
                             <div className="form-group">
                               <input type="password" onChange={this.onChange} name="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="Password"/>
                             </div>
+                            <div style={{textAlign:'center'}}>
+                              <a href="https://api.whatsapp.com/send?phone=+447498958903&text=Hallo%20Bizz%21%20Saya%20lupa%20password" target="_blank" rel="noopener noreferrer" className="font-size-16 lato-regular mb-0">
+                                  Forget password?
+                              </a>
+
+                            </div>
                             {this.state.isLoading === true ?
                             
-                            <button disabled  type="submit" className="btn btn-primary btn-user btn-block">
+                            <button disabled  type="submit" className="btn btn-primary btn-user btn-block mt-4">
                                Loading..
                             </button>
                           :
-                            <button  type="submit" className="btn btn-primary btn-user btn-block">
+                            <button  type="submit" className="btn btn-primary btn-user btn-block mt-4">
                                Login
                             </button>
                           }
@@ -162,7 +168,8 @@ class SignIn extends Component {
                 </div>
         
               </div>
-        
+
+            
             </div>
             <ToastContainer
             

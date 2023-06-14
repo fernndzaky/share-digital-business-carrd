@@ -577,7 +577,7 @@ class Dashboard extends Component {
                         </div>
                       </div>
                     </form>
-                  </div>
+                </div>
 
                 {/*
                 <div className="row">
