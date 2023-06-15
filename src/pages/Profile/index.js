@@ -344,7 +344,7 @@ class Profile extends React.Component {
             
             <div className='row m-0 px-4 py-4'>
               <div className='col-12 p-0 mb-3'>
-                <p className="font-size-24 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>OTHERS</p>
+                <p className="font-size-24 raleway-semibold mb-1" style={{color:'#252525',textDecoration:'underline'}}>WEBSITES</p>
               </div>
               <div className='col-12 p-0'>
               {
@@ -352,7 +352,7 @@ class Profile extends React.Component {
                       return(
                         <React.Fragment>
                             {
-                  <div  onClick={() => window.open(e.WebsiteLink, '_blank')} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius:'10px',textAlign:'center'}} className="py-3">
+                  <div  onClick={() => window.open(e.WebsiteLink, '_blank')} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius:'10px',textAlign:'center'}} className="py-3 mb-3">
                     <p className="font-size-18 raleway-semibold mb-1" style={{color:'#FFFFFF'}}>{e.WebsiteName}</p>
                   </div>
                     } 
