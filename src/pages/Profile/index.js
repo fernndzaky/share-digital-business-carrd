@@ -102,7 +102,7 @@ class Profile extends React.Component {
           name : response.data.content.Name,
           occupation : response.data.content.Occupation,
           phone : response.data.content.Phone,
-          email : response.data.content.Email,
+          email : response.data.content.DisplayedEmail,
           address : response.data.content.Address,
           instagramLink : response.data.content.InstagramLink,
           linkedinLink : response.data.content.LinkedinLink,

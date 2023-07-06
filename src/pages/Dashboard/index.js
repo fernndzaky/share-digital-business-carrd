@@ -97,7 +97,7 @@ class Dashboard extends Component {
           name : response.data.content.Name,
           occupation : response.data.content.Occupation,
           phone : response.data.content.Phone,
-          email : response.data.content.Email,
+          email : response.data.content.DisplayedEmail,
           address : response.data.content.Address,
           instagramLink : response.data.content.InstagramLink,
           linkedinLink : response.data.content.LinkedinLink,
@@ -439,9 +439,8 @@ class Dashboard extends Component {
                   </div>  
                   <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
                     <div >
-                      <label>Email</label> <br></br>
+                      <label>Displayed Email</label> <br></br>
                       <input type="email" value={this.state.email} onChange={this.onChange} name="email"  className="form-control" placeholder="e.g. john@doe.com" aria-label="email"  />
-                      <p style={{color:'orange'}}> If you change your email, your login credentials will also change. You will need to use your updated email for logging in.</p>
                     </div>
                   </div>  
                   <div className='col-12 pt-3'>
