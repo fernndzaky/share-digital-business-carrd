@@ -249,6 +249,8 @@ class Profile extends React.Component {
         </Helmet>
 
         <Center>
+        {this.state.isLoading !== true ?
+
           <div style={{width:'500px'}} className="pb-5">
             {/* START OF PROFILE*/}
             <div className='row m-0'>
@@ -393,6 +395,9 @@ class Profile extends React.Component {
 
 
           </div>
+          :
+          <p>Redirecting..</p>
+        }
         </Center>
         
     </div>
