@@ -377,6 +377,8 @@ class Dashboard extends Component {
           />
         </Helmet>
         {/* <!-- Page Wrapper --> */}
+        {this.state.isLoading !== true &&
+
         <div id="wrapper">
 
           {/* <!-- Sidebar --> */}
@@ -691,6 +693,7 @@ class Dashboard extends Component {
           {/* <!-- End of Content Wrapper --> */}
 
         </div>
+        }
         {/* <!-- End of Page Wrapper --> */}
 
         {/* <!-- Scroll to Top Button--> */}
@@ -703,6 +706,7 @@ class Dashboard extends Component {
             autoClose={10000}
             />
       </div>
+      
     )
   }
 }
