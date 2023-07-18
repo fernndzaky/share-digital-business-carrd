@@ -20,6 +20,7 @@ class Profile extends React.Component {
   constructor(){
     super()
     this.state = {
+        userRole : '',
         displayPicture : '',
         theme : '',
         name : '',
@@ -36,12 +37,16 @@ class Profile extends React.Component {
         websiteName : '',
         websiteLink : '',
         theme_color : "",
-        socialMediaCounter : 0
+        socialMediaCounter : 0,
+        tableTalkerLink :''
     }
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.getUserDetail()
+
+  }
+  componentDidMount(){
     this.getUserWebsites()
     this.countSocialMedia()
   }
@@ -97,6 +102,7 @@ class Profile extends React.Component {
       // Assuming the response contains data field with relevant information
       if(response.status === 200){
         this.setState({
+          userRole : response.data.content.UserRole,
           displayPicture : response.data.content.DisplayPicture,
           theme : response.data.content.Theme,
           name : response.data.content.Name,
@@ -108,7 +114,15 @@ class Profile extends React.Component {
           linkedinLink : response.data.content.LinkedinLink,
           tiktokLink : response.data.content.TiktokLink,
           twitterLink : response.data.content.TwitterLink,
+          tableTalkerLink : response.data.content.TableTalkerLink,
         })
+
+        console.log(this.state.userRole)
+
+        if(this.state.userRole == 'table-talker'){
+          window.location.href = this.state.tableTalkerLink
+          return
+        }
 
         this.countSocialMedia()
 

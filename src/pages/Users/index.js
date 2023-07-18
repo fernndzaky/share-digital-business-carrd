@@ -30,7 +30,8 @@ class Users extends Component {
         isLoading : false,
         users : [],
         email: '',
-        password: ''
+        password: '',
+        user_role: ''
     }
   }
 
@@ -54,6 +55,7 @@ class Users extends Component {
     const data = {
         "Email"         : this.state.email,
         "Password"          : this.state.password,
+        "UserRole"          : this.state.user_role,
     }
 
 
@@ -170,7 +172,7 @@ class Users extends Component {
         'accept': '*/*',
         'Authorization': 'Bearer ' + localStorage.getItem('jwt'),
       };
-  
+      
       const data = {
         'email': email
       };
@@ -245,6 +247,13 @@ class Users extends Component {
                           <div className='col-12 pt-3'>
                             <label style={{color:'grey'}}>Password</label> <br></br>
                             <input type="password" value={this.state.password} onChange={this.onChange} name="password" required className="form-control" placeholder=""   />
+                          </div>
+                          <div className='col-12 pt-3'>
+                            <label style={{color:'grey'}}>User Role</label> <br></br>
+                            <select onChange={this.onChange} name="user_role" required className="form-control" value={this.state.user_role} >
+                              <option value="user">Normal User</option>
+                              <option value="table-talker">Table Talker</option>
+                            </select>
                           </div>
                           <div className='col-12 pt-3'>
                             <p style={{color:'red'}}>{this.state.errorMessage}</p>

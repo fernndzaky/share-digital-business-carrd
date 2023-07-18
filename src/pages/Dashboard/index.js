@@ -16,9 +16,10 @@ import {Helmet} from "react-helmet";
 class Dashboard extends Component {
   componentWillMount() {
     document.getElementById('body').className = 'page-top'
+    this.getUserDetail()
+
   }
   componentDidMount(){
-      this.getUserDetail()
       this.getUserWebsites()
   }
 
@@ -43,6 +44,7 @@ class Dashboard extends Component {
         websites : [],
         websiteName : '',
         websiteLink : '',
+        tableTalkerLink:'',
     }
   }
 
@@ -87,11 +89,11 @@ class Dashboard extends Component {
   
       const response = await axios.get('https://bizz-bo-production.up.railway.app/api/user/'+ this.props.match.params.id, { headers: headers });
 
-  
       // Handle the response
       // Assuming the response contains data field with relevant information
       if(response.status === 200){
         this.setState({
+          userRole : response.data.content.UserRole,
           displayPicture : response.data.content.DisplayPicture,
           theme : response.data.content.Theme,
           name : response.data.content.Name,
@@ -103,6 +105,7 @@ class Dashboard extends Component {
           linkedinLink : response.data.content.LinkedinLink,
           tiktokLink : response.data.content.TiktokLink,
           twitterLink : response.data.content.TwitterLink,
+          tableTalkerLink: response.data.content.TableTalkerLink,
         })
       }
       // Perform any additional actions after successful login
@@ -114,6 +117,8 @@ class Dashboard extends Component {
       } else {
         console.error(error);
       }
+      console.log(this.state.userRole)
+
     }
       
     
@@ -123,6 +128,43 @@ class Dashboard extends Component {
     })
   }
 
+
+  updateTableTalkerProfile = async (e) => {
+    e.preventDefault()
+    try{
+    this.notify('Updating User..')
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'accept': '*/*',
+      'Authorization': 'Bearer '+ localStorage.getItem("jwt"),
+    };
+
+    const data = {
+        "TableTalkerLink"         : this.state.tableTalkerLink,
+    }
+
+
+
+    const response = await axios.put('http://localhost:3000/api/user/update-table-talker/'+ this.props.match.params.id, data, { headers: headers });
+    if(response.status === 200){
+      this.setState({
+        errorMessage :''
+      })
+      this.notify('Profile updated!')
+    }
+    
+    }
+    catch (error) {
+      if (error.response) {
+        this.setState({
+          errorMessage : error.response.data.errorMessage
+        })
+      } else {
+        console.error(error);
+      }
+    }
+  }
   updateProfile = async (e) => {
     e.preventDefault()
     try{
@@ -352,6 +394,8 @@ class Dashboard extends Component {
               {/* <!-- End of Topbar --> */}
 
               {/* <!-- Begin Page Content --> */}
+              {this.state.userRole !== 'table-talker' ?
+              
               <div className="container-fluid">
 
                 {/* <!-- Page Heading --> */}
@@ -591,6 +635,43 @@ class Dashboard extends Component {
                  */}
 
               </div>
+              :
+              <div className="container-fluid">
+
+                {/* <!-- Page Heading --> */}
+                <div className="row">
+                  {/* START OF DISPLAY PICTURE */}
+                  <div className='col-12 d-flex align-items-center justify-content-between'>
+                    <PageHeading title="Dashboard" />
+                    <button onClick={() => window.open('https://www.smartbizz.id/profile/'+localStorage.getItem("uid"), '_blank')} class="btn btn-primary">VIEW PROFILE</button>
+
+                  </div>
+              </div>
+
+                {/* <!-- Content Row --> */}
+                <form action="" method="PUT" onSubmit={(e) => this.updateTableTalkerProfile(e)}>
+
+                <div className="row pl-2 pr-2 pb-5">
+                  <div className='col-12 pt-4'>
+                    <h5>Table Talker Link</h5> 
+                    <div className='pt-2'>
+                      <div>
+                        
+                      <input type="text" value={this.state.tableTalkerLink} onChange={this.onChange} name="tableTalkerLink" className="form-control" placeholder="e.g. https://www.google.com"  />
+
+                      </div>
+                    </div>
+                    <div className='pt-3'>
+                      <button type="submit" class="btn btn-primary">UPDATE LINK</button>
+                    
+                      </div>
+                  </div>
+                </div>
+                </form>
+
+
+              </div>
+              }
               {/* <!-- /.container-fluid --> */}
 
             </div>
