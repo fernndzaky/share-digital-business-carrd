@@ -141,6 +141,11 @@ class Profile extends React.Component {
             theme_color : "#1D3108"
           })
         }
+        else if(this.state.theme === "light-green"){
+          this.setState({
+            theme_color : "#41b549"
+          })
+        }
       }
       // Perform any additional actions after successful login
     } catch (error) {
@@ -262,7 +267,10 @@ class Profile extends React.Component {
                 this.state.theme === "blue" ?
                 <img src="/images/Wave_Border_Blue.png" className='img-fluid' alt="Wave" style={{height:'auto',width:'100%',objectFit:'cover',marginTop:'-60px'}} />
                 :
+                this.state.theme === "green" ?
                 <img src="/images/Wave_Border_Green.png" className='img-fluid' alt="Wave" style={{height:'auto',width:'100%',objectFit:'cover',marginTop:'-60px'}} />
+                :
+                <img src="/images/Wave_Border_Light_Green.png" className='img-fluid' alt="Wave" style={{height:'auto',width:'100%',objectFit:'cover',marginTop:'-60px'}} />
               }
               </div>
               <div className='col-12 px-4 pb-5 pt-2'>

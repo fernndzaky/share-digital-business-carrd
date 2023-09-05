@@ -453,6 +453,7 @@ class Dashboard extends Component {
                         <option value={"black-and-white"}>Black and White</option>
                         <option value={"blue"}>Dark Blue</option>
                         <option value={"green"}>Dark Green</option>
+                        <option value={"light-green"}>Light Green</option>
                       </select>
                     </div>
                     {/* THEME SELECTION */}
