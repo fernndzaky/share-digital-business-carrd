@@ -32,6 +32,7 @@ class Profile extends React.Component {
         linkedinLink : '',
         tiktokLink : '',
         twitterLink : '',
+        facebookLink : '',
         isLoading : false,
         websites : [],
         websiteName : '',
@@ -66,6 +67,13 @@ class Profile extends React.Component {
 
     }
     if(this.state.twitterLink !== ""){
+      this.setState({
+        socialMediaCounter : this.state.socialMediaCounter+1
+      })
+      console.log(this.state.socialMediaCounter)
+
+    }
+    if(this.state.facebookLink !== ""){
       this.setState({
         socialMediaCounter : this.state.socialMediaCounter+1
       })
@@ -114,10 +122,9 @@ class Profile extends React.Component {
           linkedinLink : response.data.content.LinkedinLink,
           tiktokLink : response.data.content.TiktokLink,
           twitterLink : response.data.content.TwitterLink,
+          facebookLink : response.data.content.FacebookLink,
           tableTalkerLink : response.data.content.TableTalkerLink,
         })
-
-        console.log(this.state.userRole)
 
         if(this.state.userRole == 'table-talker'){
           window.location.href = this.state.tableTalkerLink
@@ -337,24 +344,29 @@ class Profile extends React.Component {
                 
                 <div className={this.state.socialMediaCounter < 3 ? 'col-12 p-0 d-flex justify-content-start align-items-start':  'col-12 p-0 d-flex justify-content-between align-items-start'} >
                     {this.state.instagramLink !== "=" &&
-                      <div onClick={() => window.open(this.state.instagramLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                      <div onClick={() => window.open(this.state.instagramLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'55px', width:'55px',borderRadius:'10px'}}>
                         <i className="fab fa-instagram font-size-36" style={{color:'white'}}></i>
                       </div>
                     }
                     {this.state.twitterLink !== "" &&
-                      <div onClick={() => window.open(this.state.twitterLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                      <div onClick={() => window.open(this.state.twitterLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'55px', width:'55px',borderRadius:'10px'}}>
                         <i className="fab fa-twitter font-size-36" style={{color:'white'}}></i>
                       </div>
                     }
                     {this.state.linkedinLink !== "" &&
-                      <div onClick={() => window.open(this.state.linkedinLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                      <div onClick={() => window.open(this.state.linkedinLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'55px', width:'55px',borderRadius:'10px'}}>
                         <i className="fab fa-linkedin-in font-size-36" style={{color:'white'}}></i>
                       </div>
                     }
                     {this.state.tiktokLink !== "" &&
-                      <div onClick={() => window.open(this.state.tiktokLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'65px', width:'65px',borderRadius:'10px'}}>
+                      <div onClick={() => window.open(this.state.tiktokLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'55px', width:'55px',borderRadius:'10px'}}>
                         <img src="/images/icons/tiktok_icon_small.png" className='img-fluid' alt="Tiktok" style={{width:'25px'}} />
 
+                      </div>
+                    }
+                    {this.state.facebookLink !== "" &&
+                      <div onClick={() => window.open(this.state.facebookLink, '_blank')} className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'} style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'55px', width:'55px',borderRadius:'10px'}}>
+                        <i className="fab fa-facebook-f font-size-36" style={{color:'white'}}></i>
                       </div>
                     }
                 </div>

@@ -38,6 +38,7 @@ class Dashboard extends Component {
         linkedinLink : null,
         tiktokLink : null,
         twitterLink : null,
+        facebookLink : null,
         submitFailed : false,
         isLoading : false,
         image: null,
@@ -105,6 +106,7 @@ class Dashboard extends Component {
           linkedinLink : response.data.content.LinkedinLink,
           tiktokLink : response.data.content.TiktokLink,
           twitterLink : response.data.content.TwitterLink,
+          facebookLink : response.data.content.FacebookLink,
           tableTalkerLink: response.data.content.TableTalkerLink,
         })
       }
@@ -186,7 +188,8 @@ class Dashboard extends Component {
         "InstagramLink" : this.state.instagramLink,
         "LinkedinLink"  : this.state.linkedinLink,
         "TiktokLink"    : this.state.tiktokLink,
-        "TwitterLink"   : this.state.twitterLink
+        "TwitterLink"   : this.state.twitterLink,
+        "FacebookLink"   : this.state.facebookLink
     }
 
 
@@ -523,6 +526,12 @@ class Dashboard extends Component {
                     <div >
                       <label>Twitter Link</label> <br></br>
                       <input type="text" value={this.state.twitterLink} onChange={this.onChange} name="twitterLink" className="form-control" placeholder="e.g. https://twitter.com/johndoe" aria-label="twitter_link"  />
+                    </div>
+                  </div>  
+                  <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                    <div >
+                      <label>Facebook Link</label> <br></br>
+                      <input type="text" value={this.state.facebookLink} onChange={this.onChange} name="facebookLink" className="form-control" placeholder="e.g. https://facebook.com/johndoe" aria-label="facebook_link"  />
                     </div>
                   </div>  
                   {/* END OF SOCIAL MEDIA SECTION */}
