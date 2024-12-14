@@ -62,7 +62,7 @@ class Sidebar extends Component {
     }
 
 
-    const response = await axios.put('https://bizz-bo-production.up.railway.app/api/change-password/'+ localStorage.getItem("uid"), data, { headers: headers });
+    const response = await axios.put('https://bizz-bo-prod.up.railway.app/api/change-password/'+ localStorage.getItem("uid"), data, { headers: headers });
     if(response.status == 200){
       this.setState({
         errorMessage :''

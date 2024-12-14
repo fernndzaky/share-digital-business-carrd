@@ -103,7 +103,7 @@ class Profile extends React.Component {
       };
   
   
-      const response = await axios.get('https://bizz-bo-production.up.railway.app/api/user/'+ this.props.match.params.id, { headers: headers });
+      const response = await axios.get('https://bizz-bo-prod.up.railway.app/api/user/'+ this.props.match.params.id, { headers: headers });
 
   
       // Handle the response
@@ -185,7 +185,7 @@ class Profile extends React.Component {
       };
   
   
-      const response = await axios.get('https://bizz-bo-production.up.railway.app/api/user/websites/'+ this.props.match.params.id, { headers: headers });
+      const response = await axios.get('https://bizz-bo-prod.up.railway.app/api/user/websites/'+ this.props.match.params.id, { headers: headers });
 
   
       // Handle the response

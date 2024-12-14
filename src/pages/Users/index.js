@@ -59,7 +59,7 @@ class Users extends Component {
     }
 
 
-    const response = await axios.post('https://bizz-bo-production.up.railway.app/api/signup', data, { headers: headers });
+    const response = await axios.post('https://bizz-bo-prod.up.railway.app/api/signup', data, { headers: headers });
     if(response.status == 200){
       this.setState({
         errorMessage :''
@@ -93,7 +93,7 @@ class Users extends Component {
       };
   
   
-      const response = await axios.get('https://bizz-bo-production.up.railway.app/api/user/all', { headers: headers });
+      const response = await axios.get('https://bizz-bo-prod.up.railway.app/api/user/all', { headers: headers });
 
   
       // Handle the response
@@ -133,7 +133,7 @@ class Users extends Component {
       };
   
   
-      const response = await axios.delete('https://bizz-bo-production.up.railway.app/api/user/delete/'+ uid, { headers: headers });
+      const response = await axios.delete('https://bizz-bo-prod.up.railway.app/api/user/delete/'+ uid, { headers: headers });
 
   
       // Handle the response
@@ -177,7 +177,7 @@ class Users extends Component {
         'email': email
       };
   
-      const response = await axios.put('https://bizz-bo-production.up.railway.app/api/reset-password', data, { headers: headers });
+      const response = await axios.put('https://bizz-bo-prod.up.railway.app/api/reset-password', data, { headers: headers });
 
       // Handle the response
       // Assuming the response contains a data field with relevant information

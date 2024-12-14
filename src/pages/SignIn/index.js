@@ -56,7 +56,7 @@ class SignIn extends Component {
             password : this.state.password
           }
       
-          const response = await axios.post('https://bizz-bo-production.up.railway.app/api/login', data, { headers: headers });
+          const response = await axios.post('https://bizz-bo-prod.up.railway.app/api/login', data, { headers: headers });
 
       
           // Handle the response
